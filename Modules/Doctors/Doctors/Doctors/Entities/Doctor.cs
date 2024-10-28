@@ -13,7 +13,8 @@ namespace Doctors.Doctors.Entities
         public string Name { get; private set; } = default!;
         public string Surname { get; private set; } = default!;
         public string Department { get; private set; } = default!;
-        public string Specialization { get; private set; } = default!;
+        public Guid SpecializationId { get; private set; }
+        public Specialization Specialization { get; private set; }
         public DateOnly WorkingStartDate { get; private set; }
         public string GraduatedUniversity { get; private set; } = default!;
 
@@ -24,18 +25,19 @@ namespace Doctors.Doctors.Entities
             ArgumentException.ThrowIfNullOrEmpty(dto.Name);
             ArgumentException.ThrowIfNullOrEmpty(dto.Surname);
             ArgumentException.ThrowIfNullOrEmpty(dto.Department);
-            ArgumentException.ThrowIfNullOrEmpty(dto.Specialization);
             ArgumentException.ThrowIfNullOrEmpty(dto.GraduatedUniversity);
 
-            //Create
-            var doctor = new Doctor
+
+
+             //Create
+             var doctor = new Doctor
             {
 
                 Id=Guid.NewGuid(),
                 Name = dto.Name,
                 Surname = dto.Surname,
                 Department = dto.Department,
-                Specialization = dto.Specialization,
+                SpecializationId = dto.Specialization,
                 WorkingStartDate = dto.WorkingStartDate,
                 GraduatedUniversity = dto.GraduatedUniversity,
             };
@@ -50,7 +52,6 @@ namespace Doctors.Doctors.Entities
             ArgumentException.ThrowIfNullOrEmpty(dto.Name);
             ArgumentException.ThrowIfNullOrEmpty(dto.Surname);
             ArgumentException.ThrowIfNullOrEmpty(dto.Department);
-            ArgumentException.ThrowIfNullOrEmpty(dto.Specialization);
             ArgumentException.ThrowIfNullOrEmpty(dto.GraduatedUniversity);
 
            
@@ -58,9 +59,40 @@ namespace Doctors.Doctors.Entities
             Name = dto.Name;
             Surname = dto.Surname;
             Department = dto.Department;
-            Specialization = dto.Specialization;
+            SpecializationId = dto.Specialization;
             WorkingStartDate = dto.WorkingStartDate;
             GraduatedUniversity = dto.GraduatedUniversity;
         }
+
+        public static Doctor Create(DoctorFeedDto dto, Guid SpecializationId)
+        {
+
+            //validate incoming request 
+            ArgumentException.ThrowIfNullOrEmpty(dto.Name);
+            ArgumentException.ThrowIfNullOrEmpty(dto.Surname);
+            ArgumentException.ThrowIfNullOrEmpty(dto.Department);
+            ArgumentException.ThrowIfNullOrEmpty(dto.GraduatedUniversity);
+
+
+
+            //Create
+            var doctor = new Doctor
+            {
+
+                Id = Guid.NewGuid(),
+                Name = dto.Name,
+                Surname = dto.Surname,
+                Department = dto.Department,
+                SpecializationId = SpecializationId,
+                WorkingStartDate = dto.WorkingStartDate,
+                GraduatedUniversity = dto.GraduatedUniversity,
+            };
+
+            return doctor;
+        }
+
+
+
+
     }
 }

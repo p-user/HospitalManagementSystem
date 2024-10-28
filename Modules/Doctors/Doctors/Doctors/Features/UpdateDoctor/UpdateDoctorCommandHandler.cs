@@ -1,5 +1,6 @@
 ﻿using Doctors.Data;
 using Doctors.Doctors.Dtos;
+using FluentValidation;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,18 @@ namespace Doctors.Doctors.Features.UpdateDoctor
 
     public record UpdateDoctorCommand (DoctorDto DoctorDto, Guid Id) : IRequest<UpdateDoctorCommandResponse>;
     public record UpdateDoctorCommandResponse(bool Succeeded);
-    public class UpdateDoctorCommandHandler(DoctorsDbContext doctorsDbContext) : IRequestHandler<UpdateDoctorCommand, UpdateDoctorCommandResponse>
+    public class UpdateDoctorCommandHandler(DoctorsDbContext doctorsDbContext, IValidator<DoctorDto> validator) : IRequestHandler<UpdateDoctorCommand, UpdateDoctorCommandResponse>
     {
         public async Task<UpdateDoctorCommandResponse> Handle(UpdateDoctorCommand request, CancellationToken cancellationToken)
         {
             //ToDo : implement the repository pattern
+
+            var validationResult = await validator.ValidateAsync(request.DoctorDto, cancellationToken);
+            if (validationResult.Errors.Any())
+            {
+                throw new ValidationException(validationResult.Errors.Select(s => s.ErrorMessage).FirstOrDefault());
+
+            }
 
             //check if exists
 

@@ -1,15 +1,17 @@
 ﻿
+using Shared.Pagination;
+
 namespace Doctors.Doctors.Features.GetDoctors
 {
 
-    public record GetDoctorsResponse(List<DoctorDto> DoctorDtos);
+    public record GetDoctorsResponse(PaginatedResult<DoctorDto> DoctorDtos);
     public class GetDoctorsEndpoint : ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/doctors", async (ISender sender) =>
+            app.MapGet("/doctors", async([AsParameters] PaginationRequest request,ISender sender) =>
             {
-                var result  = await sender.Send( new GetDoctorsQuery());
+                var result  = await sender.Send( new GetDoctorsQuery(request));
                 var response = result.Adapt<GetDoctorsResponse>();
                 return Results.Ok(response);
             })

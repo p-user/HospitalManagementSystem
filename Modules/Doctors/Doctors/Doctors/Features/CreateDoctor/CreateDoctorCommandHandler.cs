@@ -1,8 +1,5 @@
 ﻿
-
-using Doctors.Data;
-using Doctors.Doctors.Dtos;
-using MediatR;
+using FluentValidation;
 
 namespace Doctors.Doctors.Features.CreateDoctor
 {
@@ -13,16 +10,20 @@ namespace Doctors.Doctors.Features.CreateDoctor
     public record CreateDoctorResult(Guid Id);
 
 
-    public class CreateDoctorCommandHandler(DoctorsDbContext _dbContext) : IRequestHandler<CreateDoctorCommand, CreateDoctorResult>
+    public class CreateDoctorCommandHandler(DoctorsDbContext _dbContext, IValidator<DoctorDto> validator) : IRequestHandler<CreateDoctorCommand, CreateDoctorResult>
     {
         public async Task<CreateDoctorResult> Handle(CreateDoctorCommand request, CancellationToken cancellationToken)
         {
            //TODO : inject repository pattern  in class INSTEAD OF dbcontext
+            var validationResult = await validator.ValidateAsync(request.DoctorDto, cancellationToken);
+            if (validationResult.Errors.Any())
+            { 
+                throw new ValidationException(validationResult.Errors.Select(s=>s.ErrorMessage).FirstOrDefault());
 
+            }
             //create entity from dto 
             var doctorEntity = CreateNewDoctor(request.DoctorDto);
 
-            //TODO : add & save using repository pattern
              _dbContext.Doctors.Add(doctorEntity);
             await _dbContext.SaveChangesAsync();
 

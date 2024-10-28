@@ -9,6 +9,7 @@
         }
 
         public DbSet<Doctor> Doctors => Set<Doctor>();
+        public DbSet<Specialization> Specializations => Set<Specialization>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

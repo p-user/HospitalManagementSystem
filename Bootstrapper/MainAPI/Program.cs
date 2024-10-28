@@ -1,14 +1,20 @@
-
+using Shared.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, config) =>
+{
+    config.ReadFrom.Configuration(context.Configuration);
+});
 
 // Add services to the container.
 
 builder.Services.AddAppointmentsModule(builder.Configuration);
 builder.Services.AddDoctorsModule(builder.Configuration);
-builder.Services.AddBillingModule(builder.Configuration);
 builder.Services.AddPatientsModule(builder.Configuration);
 builder.Services.AddCarter(typeof(DoctorsModule).Assembly);
+
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 
 builder.Services.AddControllers();
@@ -18,12 +24,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 app.MapCarter();
+app.UseSerilogRequestLogging();
+app.UseExceptionHandler(opt => { });
 
 // Configure the HTTP request pipeline.
 app.UseDoctorsModule();
 app.UsePatientsModule();
 app.UseAppointmentsModule();
-app.UseBillingModule();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

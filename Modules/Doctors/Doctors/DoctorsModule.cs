@@ -1,5 +1,6 @@
 ﻿using Doctors.Data;
 using Doctors.Data.Seed;
+using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,8 @@ namespace Doctors
             {
                 config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
+
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 

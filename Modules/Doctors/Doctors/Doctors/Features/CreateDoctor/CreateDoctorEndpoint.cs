@@ -7,7 +7,7 @@
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("product", async (CreateDoctorRequest request, ISender sender) =>
+            app.MapPost("doctors", async (CreateDoctorRequest request, ISender sender) =>
             {
                 var command = request.Adapt<CreateDoctorCommand>();
                 var result = await sender.Send(command);

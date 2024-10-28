@@ -7,8 +7,18 @@ namespace Doctors.Doctors.Dtos
      string Name ,
      string Surname ,
      string Department ,
-     string Specialization ,
+     Guid Specialization ,
      DateOnly WorkingStartDate ,
      string GraduatedUniversity 
        );
+
+    public record DoctorFeedDto
+    (
+     string Name,
+     string Surname,
+     string Department,
+     String Specialization,
+     DateOnly WorkingStartDate,
+     string GraduatedUniversity
+     );
 }
