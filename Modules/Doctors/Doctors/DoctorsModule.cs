@@ -40,18 +40,12 @@ namespace Doctors
 
         public static IApplicationBuilder UseDoctorsModule (this IApplicationBuilder app)
         {
-            //init db
             app.UseMigration<DoctorsDbContext>();
 
-           // InitializeDbAsync(app).GetAwaiter().GetResult();    
+         
             return app;
         }
 
-        //private static async Task InitializeDbAsync (IApplicationBuilder app)
-        //{
-
-            
-
-        //}
+       
     }
 }

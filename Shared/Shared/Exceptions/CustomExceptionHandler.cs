@@ -14,20 +14,20 @@ namespace Shared.Exceptions
 
             (string Detail, string Title, int StatusCode) details = exception switch
             {
-                //InternalServerException =>
-                //(
-                //exception.Message , exception.GetType().Name, httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError
-                //),
+                InternalServerException =>
+                (
+                exception.Message, exception.GetType().Name, httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError
+                ),
 
-                //BadRequestException =>
-                //(
-                //exception.Message, exception.GetType().Name, httpContext.Response.StatusCode = StatusCodes.Status400BadRequest
-                //),
+                BadRequestException =>
+                (
+                exception.Message, exception.GetType().Name, httpContext.Response.StatusCode = StatusCodes.Status400BadRequest
+                ),
 
-                //NotFoundException =>
-                //(
-                //exception.Message, exception.GetType().Name, httpContext.Response.StatusCode = StatusCodes.Status404NotFound
-                //),
+                NotFoundException =>
+                (
+                exception.Message, exception.GetType().Name, httpContext.Response.StatusCode = StatusCodes.Status404NotFound
+                ),
 
                 ValidationException =>
                 (

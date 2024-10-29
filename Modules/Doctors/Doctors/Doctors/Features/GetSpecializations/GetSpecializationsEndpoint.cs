@@ -1,12 +1,4 @@
-﻿using Doctors.Doctors.Features.GetDoctors;
-using Shared.Pagination;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Doctors.Doctors.Features.GetSpecializations
+﻿namespace Doctors.Doctors.Features.GetSpecializations
 {
     public record GetSpecializationsResponse(List<SpecializationDto> SpecializationDtos);
     public class GetSpecializationsEndpoint : ICarterModule

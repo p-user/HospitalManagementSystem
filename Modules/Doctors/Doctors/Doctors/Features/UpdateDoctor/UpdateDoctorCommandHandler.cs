@@ -2,11 +2,8 @@
 using Doctors.Doctors.Dtos;
 using FluentValidation;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.Exceptions;
+
 
 namespace Doctors.Doctors.Features.UpdateDoctor
 {
@@ -29,7 +26,7 @@ namespace Doctors.Doctors.Features.UpdateDoctor
             //check if exists
 
             var doctor  = await doctorsDbContext.Doctors.FindAsync(request.Id, cancellationToken);
-            if (doctor is null) { throw new Exception($"Doctor not found to update!"); }
+            if (doctor is null) { throw new NotFoundException($" Doctor  with {request.Id.ToString()} not found");  }
 
             //update the doctor object 
             UpdateEntityValues(doctor , request.DoctorDto);

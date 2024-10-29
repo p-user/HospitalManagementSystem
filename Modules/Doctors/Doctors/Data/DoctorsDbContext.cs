@@ -14,7 +14,7 @@
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.HasDefaultSchema("Doctors");
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); //toDo set a specific class for model validation
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); 
             base.OnModelCreating(builder);
         }
     }

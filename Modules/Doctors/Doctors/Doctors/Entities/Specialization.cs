@@ -7,6 +7,8 @@ namespace Doctors.Doctors.Entities
     {
         public string Name { get; private set; } = default!;
         public string Description { get; private set; }
+        public virtual ICollection<Doctor> Doctors { get; private set; } = new List<Doctor>();
+
 
         public static Specialization CreateSpecialization(string name, string description)
         {
@@ -16,14 +18,15 @@ namespace Doctors.Doctors.Entities
             {
                 Id = Guid.NewGuid(),
                 Name = name,
-                Description = description,
+                Description = description
+                
 
             };
             return entity;
            
         }
 
-        public void Update(Guid id, string name, string description)
+        public void Update(string name, string description)
         {
 
             //validate incoming request 

@@ -1,20 +1,15 @@
-﻿using Doctors.Doctors.Dtos;
-using Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shared;
 
 namespace Doctors.Doctors.Entities
 {
-    public class Doctor: Entity<Guid>
+    public class Doctor: Entity<Guid> //should be an aggrehhate  => entity + events
     {
         public string Name { get; private set; } = default!;
         public string Surname { get; private set; } = default!;
-        public string Department { get; private set; } = default!;
+        public Guid DepartmentId { get; private set; } 
+        public string Department { get; private set; } = default!; //should come from departments module
         public Guid SpecializationId { get; private set; }
-        public Specialization Specialization { get; private set; }
+        public Specialization Specialization { get; private set; } = default!;
         public DateOnly WorkingStartDate { get; private set; }
         public string GraduatedUniversity { get; private set; } = default!;
 

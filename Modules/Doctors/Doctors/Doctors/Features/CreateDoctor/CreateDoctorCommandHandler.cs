@@ -14,7 +14,7 @@ namespace Doctors.Doctors.Features.CreateDoctor
     {
         public async Task<CreateDoctorResult> Handle(CreateDoctorCommand request, CancellationToken cancellationToken)
         {
-           //TODO : inject repository pattern  in class INSTEAD OF dbcontext
+          
             var validationResult = await validator.ValidateAsync(request.DoctorDto, cancellationToken);
             if (validationResult.Errors.Any())
             { 

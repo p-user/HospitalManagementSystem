@@ -1,0 +1,9 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using System.Reflection;
+global using Microsoft.AspNetCore.Builder;
+global using Departments.Data;
+global using FluentValidation;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Shared.Data.Interceptors;
+global using Shared.Data;

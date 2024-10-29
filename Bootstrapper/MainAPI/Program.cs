@@ -1,3 +1,4 @@
+using Departments;
 using Shared.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Host.UseSerilog((context, config) =>
 // Add services to the container.
 
 builder.Services.AddAppointmentsModule(builder.Configuration);
+builder.Services.AddDepartmentsModule(builder.Configuration);
 builder.Services.AddDoctorsModule(builder.Configuration);
 builder.Services.AddPatientsModule(builder.Configuration);
 builder.Services.AddCarter(typeof(DoctorsModule).Assembly);
@@ -28,6 +30,7 @@ app.UseSerilogRequestLogging();
 app.UseExceptionHandler(opt => { });
 
 // Configure the HTTP request pipeline.
+app.UseDepartmentsModule();
 app.UseDoctorsModule();
 app.UsePatientsModule();
 app.UseAppointmentsModule();
