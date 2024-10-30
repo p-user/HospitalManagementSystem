@@ -1,4 +1,5 @@
-﻿
+﻿using Departments.Data.Seed;
+using Shared.Data.Seed;
 
 namespace Departments
 {
@@ -7,13 +8,7 @@ namespace Departments
         public static IServiceCollection AddDepartmentsModule(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddMediatR(config =>
-            {
-                config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            });
-
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
+           
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<DepartmentsDbContext>(options =>
@@ -23,7 +18,7 @@ namespace Departments
 
             });
 
-           // services.AddScoped<ISeedData, DoctorsSeed>();
+            services.AddScoped<ISeedData, DepartmentsSeed>();
             return services;
         }
 

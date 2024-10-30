@@ -1,9 +1,5 @@
 ﻿using Doctors.Doctors.Features.DeleteDoctor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Doctors.Doctors.Features.GetDoctorById
 {
@@ -13,7 +9,7 @@ namespace Doctors.Doctors.Features.GetDoctorById
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/doctors/{id}", async (Guid id, ISender sender) =>
+            app.MapGet("/doctors/{id}", async ([FromRoute]Guid id, ISender sender) =>
             {
                 var result = await sender.Send(new GetDoctorByIdQuery(id));
                 var response = result.Adapt<GetDoctorByIdResponse>();

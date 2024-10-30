@@ -7,7 +7,6 @@ namespace Doctors.Doctors.Entities
         public string Name { get; private set; } = default!;
         public string Surname { get; private set; } = default!;
         public Guid DepartmentId { get; private set; } 
-        public string Department { get; private set; } = default!; //should come from departments module
         public Guid SpecializationId { get; private set; }
         public Specialization Specialization { get; private set; } = default!;
         public DateOnly WorkingStartDate { get; private set; }
@@ -19,7 +18,6 @@ namespace Doctors.Doctors.Entities
             //validate incoming request 
             ArgumentException.ThrowIfNullOrEmpty(dto.Name);
             ArgumentException.ThrowIfNullOrEmpty(dto.Surname);
-            ArgumentException.ThrowIfNullOrEmpty(dto.Department);
             ArgumentException.ThrowIfNullOrEmpty(dto.GraduatedUniversity);
 
 
@@ -31,7 +29,7 @@ namespace Doctors.Doctors.Entities
                 Id=Guid.NewGuid(),
                 Name = dto.Name,
                 Surname = dto.Surname,
-                Department = dto.Department,
+                 DepartmentId = dto.DepartmentId,
                 SpecializationId = dto.Specialization,
                 WorkingStartDate = dto.WorkingStartDate,
                 GraduatedUniversity = dto.GraduatedUniversity,
@@ -46,14 +44,13 @@ namespace Doctors.Doctors.Entities
             //validate incoming request 
             ArgumentException.ThrowIfNullOrEmpty(dto.Name);
             ArgumentException.ThrowIfNullOrEmpty(dto.Surname);
-            ArgumentException.ThrowIfNullOrEmpty(dto.Department);
             ArgumentException.ThrowIfNullOrEmpty(dto.GraduatedUniversity);
 
            
 
             Name = dto.Name;
             Surname = dto.Surname;
-            Department = dto.Department;
+            DepartmentId = dto.DepartmentId;
             SpecializationId = dto.Specialization;
             WorkingStartDate = dto.WorkingStartDate;
             GraduatedUniversity = dto.GraduatedUniversity;
@@ -77,7 +74,7 @@ namespace Doctors.Doctors.Entities
                 Id = Guid.NewGuid(),
                 Name = dto.Name,
                 Surname = dto.Surname,
-                Department = dto.Department,
+               // Department = dto.Department,
                 SpecializationId = SpecializationId,
                 WorkingStartDate = dto.WorkingStartDate,
                 GraduatedUniversity = dto.GraduatedUniversity,

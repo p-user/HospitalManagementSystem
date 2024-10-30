@@ -22,7 +22,7 @@ namespace Doctors.Doctors.Features.CreateSpecialization
 
         private Specialization CreateSpecialization(SpecializationDto specializationDto)
         {
-            var entity = Specialization.CreateSpecialization(specializationDto.Name, specializationDto.Description);
+            var entity = Specialization.Create(specializationDto.Name, specializationDto.Description);
             return entity;
         }
     }

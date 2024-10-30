@@ -18,13 +18,6 @@ namespace Doctors
         public static IServiceCollection AddDoctorsModule(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddMediatR(config =>
-            {
-                config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
-            });
-
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<DoctorsDbContext>(options =>

@@ -2,7 +2,7 @@
 
 namespace Departments.Data
 {
-    internal class DepartmentsDbContext : DbContext
+    public class DepartmentsDbContext : DbContext
     {
         public DepartmentsDbContext(DbContextOptions<DepartmentsDbContext> options) : base(options)
         {

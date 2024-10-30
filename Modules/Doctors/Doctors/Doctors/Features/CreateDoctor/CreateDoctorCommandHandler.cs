@@ -1,4 +1,5 @@
 ﻿
+using Departments.Contracts.Departments.Features.GetDepartment;
 using FluentValidation;
 
 namespace Doctors.Doctors.Features.CreateDoctor
@@ -10,7 +11,7 @@ namespace Doctors.Doctors.Features.CreateDoctor
     public record CreateDoctorResult(Guid Id);
 
 
-    public class CreateDoctorCommandHandler(DoctorsDbContext _dbContext, IValidator<DoctorDto> validator) : IRequestHandler<CreateDoctorCommand, CreateDoctorResult>
+    public class CreateDoctorCommandHandler(DoctorsDbContext _dbContext, IValidator<DoctorDto> validator, ISender sender) : IRequestHandler<CreateDoctorCommand, CreateDoctorResult>
     {
         public async Task<CreateDoctorResult> Handle(CreateDoctorCommand request, CancellationToken cancellationToken)
         {
@@ -21,6 +22,8 @@ namespace Doctors.Doctors.Features.CreateDoctor
                 throw new ValidationException(validationResult.Errors.Select(s=>s.ErrorMessage).FirstOrDefault());
 
             }
+
+            var department = await sender.Send(new GetDepartmentByIdQuery(request.DoctorDto.DepartmentId));
             //create entity from dto 
             var doctorEntity = CreateNewDoctor(request.DoctorDto);
 

@@ -1,5 +1,8 @@
 using Departments;
+using FluentValidation;
+using Shared.Behaviors;
 using Shared.Exceptions;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +13,25 @@ builder.Host.UseSerilog((context, config) =>
 
 // Add services to the container.
 
-builder.Services.AddAppointmentsModule(builder.Configuration);
 builder.Services.AddDepartmentsModule(builder.Configuration);
 builder.Services.AddDoctorsModule(builder.Configuration);
 builder.Services.AddPatientsModule(builder.Configuration);
-builder.Services.AddCarter(typeof(DoctorsModule).Assembly);
+builder.Services.AddAppointmentsModule(builder.Configuration);
+
+var doctorsAssembly = typeof(DoctorsModule).Assembly;
+var departmentsAssembly = typeof(DepartmentsModule).Assembly;
+
+//add carter
+builder.Services.AddCarter(doctorsAssembly, departmentsAssembly);
+
+//add fluent validation
+builder.Services.AddValidatorsFromAssemblies([doctorsAssembly,departmentsAssembly]);
+
+//add MediatR
+builder.Services.AddMediatRDromAssemblies(doctorsAssembly, departmentsAssembly);
+
+
+
 
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 

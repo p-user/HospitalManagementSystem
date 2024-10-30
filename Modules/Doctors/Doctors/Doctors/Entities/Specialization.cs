@@ -10,7 +10,7 @@ namespace Doctors.Doctors.Entities
         public virtual ICollection<Doctor> Doctors { get; private set; } = new List<Doctor>();
 
 
-        public static Specialization CreateSpecialization(string name, string description)
+        public static Specialization Create(string name, string description)
         {
             ArgumentException.ThrowIfNullOrEmpty(name);
 

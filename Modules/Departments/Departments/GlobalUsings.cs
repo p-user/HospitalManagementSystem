@@ -2,8 +2,13 @@
 global using System.Reflection;
 global using Microsoft.AspNetCore.Builder;
 global using Departments.Data;
-global using FluentValidation;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Shared.Data.Interceptors;
 global using Shared.Data;
+global using Departments.Contracts.Departments.Dtos;
+global using Departments.Contracts.Departments.Features.GetDepartment;
+global using Mapster;
+global using MediatR;
+global using Shared.Exceptions;
+global using Carter;

@@ -8,6 +8,7 @@ namespace Doctors.Data.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x=>x.Name).IsRequired();
 
+            
 
             builder.HasOne(d => d.Specialization)
            .WithMany(s => s.Doctors)

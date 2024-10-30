@@ -8,7 +8,6 @@ namespace Departments.Departments.Models
         public string Name { get; private set; } = default!;
         public string Description { get; private set; } = default!;
 
-        //public virtual ICollection <Doctor> Doctors { get; private set; }= new List<Doctor>();
 
         //add working shifts 
 

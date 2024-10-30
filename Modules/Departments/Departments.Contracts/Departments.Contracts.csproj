@@ -8,11 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Shared\Shared.csproj" />
-    <ProjectReference Include="..\Departments.Contracts\Departments.Contracts.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Departments\Dtos\" />
   </ItemGroup>
 
 </Project>
