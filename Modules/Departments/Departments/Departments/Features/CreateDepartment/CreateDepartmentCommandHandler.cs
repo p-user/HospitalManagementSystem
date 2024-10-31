@@ -23,7 +23,7 @@ namespace Departments.Departments.Features.CreateDepartment
 
         private Department CreateDepartment(DepartmentDto departmentDto)
         {
-            return Department.Create(departmentDto.Name, departmentDto.Description);
+            return Department.Create(departmentDto.Name, departmentDto.Description, departmentDto.HeadOfDepartment);
         }
     }
 }

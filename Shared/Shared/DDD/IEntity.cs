@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared
+namespace Shared.DDD
 {
     public interface IEntity
     {
 
         public string? LastUpdatedBy { get; set; }
-        public DateTime? LastUpdate { get; set; } 
+        public DateTime? LastUpdate { get; set; }
         public string? CreatedBy { get; set; }
-        public DateTime? CreatedAt { get; set; } 
+        public DateTime? CreatedAt { get; set; }
     }
 
 

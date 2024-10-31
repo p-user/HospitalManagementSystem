@@ -2,6 +2,7 @@
 using Doctors.Data.Seed;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Data;
@@ -20,10 +21,13 @@ namespace Doctors
 
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<DoctorsDbContext>(options =>
+            services.AddScoped<ISaveChangesInterceptor, AuditableInterceptor>();
+            services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventInterceptor>();
+
+            services.AddDbContext<DoctorsDbContext>((serviceProvider, options) =>
             {
                 options.UseSqlServer(connectionString);
-                options.AddInterceptors(new AuditableInterceptor());
+                options.AddInterceptors(serviceProvider.GetServices<ISaveChangesInterceptor>());
 
             });
 

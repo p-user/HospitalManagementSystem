@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Data;
@@ -26,10 +27,13 @@ namespace Appointments
 
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<AppointmentsDbContext>(options =>
+            services.AddScoped<ISaveChangesInterceptor, AuditableInterceptor>();
+            services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventInterceptor>();
+
+            services.AddDbContext<AppointmentsDbContext>((serviceProvider, options) =>
             {
                 options.UseSqlServer(connectionString);
-                options.AddInterceptors(new AuditableInterceptor());
+                options.AddInterceptors(serviceProvider.GetServices<ISaveChangesInterceptor>());
 
             });
 

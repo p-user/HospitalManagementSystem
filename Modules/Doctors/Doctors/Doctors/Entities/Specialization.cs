@@ -1,5 +1,4 @@
-﻿
-using Shared;
+﻿using Shared.DDD;
 
 namespace Doctors.Doctors.Entities
 {

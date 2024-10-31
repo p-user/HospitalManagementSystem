@@ -1,8 +1,9 @@
-﻿using Shared;
+﻿using Doctors.Events;
+using Shared.DDD;
 
 namespace Doctors.Doctors.Entities
 {
-    public class Doctor: Entity<Guid> //should be an aggrehhate  => entity + events
+    public class Doctor: Aggregate<Guid>
     {
         public string Name { get; private set; } = default!;
         public string Surname { get; private set; } = default!;
@@ -29,11 +30,13 @@ namespace Doctors.Doctors.Entities
                 Id=Guid.NewGuid(),
                 Name = dto.Name,
                 Surname = dto.Surname,
-                 DepartmentId = dto.DepartmentId,
+                DepartmentId = dto.DepartmentId,
                 SpecializationId = dto.Specialization,
                 WorkingStartDate = dto.WorkingStartDate,
                 GraduatedUniversity = dto.GraduatedUniversity,
             };
+
+            doctor.AddDomainEvent(new DoctorAddedToDepartmentEvent(doctor));
 
             return doctor;
         }
@@ -46,14 +49,18 @@ namespace Doctors.Doctors.Entities
             ArgumentException.ThrowIfNullOrEmpty(dto.Surname);
             ArgumentException.ThrowIfNullOrEmpty(dto.GraduatedUniversity);
 
-           
-
             Name = dto.Name;
             Surname = dto.Surname;
-            DepartmentId = dto.DepartmentId;
             SpecializationId = dto.Specialization;
             WorkingStartDate = dto.WorkingStartDate;
             GraduatedUniversity = dto.GraduatedUniversity;
+
+            if (DepartmentId != dto.DepartmentId)
+            {
+                DepartmentId = dto.DepartmentId;
+                AddDomainEvent(new DoctorChangedDepartmentEvent(this));
+
+            }
         }
 
         public static Doctor Create(DoctorFeedDto dto, Guid SpecializationId)

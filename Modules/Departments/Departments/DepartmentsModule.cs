@@ -1,4 +1,6 @@
 ﻿using Departments.Data.Seed;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.DependencyInjection;
 using Shared.Data.Seed;
 
 namespace Departments
@@ -11,10 +13,13 @@ namespace Departments
            
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<DepartmentsDbContext>(options =>
+            services.AddScoped<ISaveChangesInterceptor, AuditableInterceptor>();
+            services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventInterceptor>();
+
+            services.AddDbContext<DepartmentsDbContext>((sp,options) =>
             {
                 options.UseSqlServer(connectionString);
-                options.AddInterceptors(new AuditableInterceptor());
+                options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
 
             });
 

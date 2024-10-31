@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Patients.Data;
@@ -24,10 +25,13 @@ namespace Patients
 
             var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<PatientsDbContext>(options =>
+            services.AddScoped<ISaveChangesInterceptor, AuditableInterceptor>();
+            services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventInterceptor>();
+
+            services.AddDbContext<PatientsDbContext>((serviceProvider, options) =>
             {
                 options.UseSqlServer(connectionString);
-                options.AddInterceptors(new AuditableInterceptor());
+                options.AddInterceptors(serviceProvider.GetServices<ISaveChangesInterceptor>());
 
             });
             return services;
