@@ -13,13 +13,18 @@ namespace Doctors.Doctors.Entities
         public DateOnly WorkingStartDate { get; private set; }
         public string GraduatedUniversity { get; private set; } = default!;
 
-        public static Doctor Create(DoctorDto dto)
+        //from departments module
+        public bool IsHeadOfDepartment { get; private set; } = false; 
+
+
+
+        public static Doctor Create(string name, string surname, Guid departmentId, Guid specializationId, DateOnly workingStartDate, string graduatedUniversity)
         {
 
             //validate incoming request 
-            ArgumentException.ThrowIfNullOrEmpty(dto.Name);
-            ArgumentException.ThrowIfNullOrEmpty(dto.Surname);
-            ArgumentException.ThrowIfNullOrEmpty(dto.GraduatedUniversity);
+            ArgumentException.ThrowIfNullOrEmpty(name);
+            ArgumentException.ThrowIfNullOrEmpty(surname);
+            ArgumentException.ThrowIfNullOrEmpty(graduatedUniversity);
 
 
 
@@ -28,15 +33,15 @@ namespace Doctors.Doctors.Entities
             {
 
                 Id=Guid.NewGuid(),
-                Name = dto.Name,
-                Surname = dto.Surname,
-                DepartmentId = dto.DepartmentId,
-                SpecializationId = dto.Specialization,
-                WorkingStartDate = dto.WorkingStartDate,
-                GraduatedUniversity = dto.GraduatedUniversity,
+                Name = name,
+                Surname = surname,
+                DepartmentId = departmentId,
+                SpecializationId = specializationId,
+                WorkingStartDate = workingStartDate,
+                GraduatedUniversity = graduatedUniversity,
             };
 
-            doctor.AddDomainEvent(new DoctorAddedToDepartmentEvent(doctor));
+            doctor.AddDomainEvent(new DoctorAddedToDepartmentDomainEvent(doctor)); 
 
             return doctor;
         }
@@ -51,14 +56,14 @@ namespace Doctors.Doctors.Entities
 
             Name = dto.Name;
             Surname = dto.Surname;
-            SpecializationId = dto.Specialization;
+            SpecializationId = dto.SpecializationId;
             WorkingStartDate = dto.WorkingStartDate;
             GraduatedUniversity = dto.GraduatedUniversity;
 
             if (DepartmentId != dto.DepartmentId)
             {
                 DepartmentId = dto.DepartmentId;
-                AddDomainEvent(new DoctorChangedDepartmentEvent(this));
+                AddDomainEvent(new DoctorChangedDepartmentDomainEvent(this));
 
             }
         }
@@ -88,6 +93,12 @@ namespace Doctors.Doctors.Entities
             };
 
             return doctor;
+        }
+
+
+        public void SetHeadOfDepartment(bool _isHeadOfDepartment)
+        {
+            IsHeadOfDepartment = _isHeadOfDepartment;
         }
 
 

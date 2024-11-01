@@ -1,12 +1,13 @@
-﻿using Shared.DDD;
+﻿using Departments.Departments.Events;
+using Shared.DDD;
 
 namespace Departments.Departments.Models
 {
-    public class Department : Entity<Guid>
+    public class Department : Aggregate<Guid>
     {
         public string Name { get; private set; } = default!;
         public string Description { get; private set; } = default!;
-        public Guid HeadOfDepartment { get; private set; } = default!;
+        public Guid? HeadOfDepartment { get; private set; } = default!;
         public List<Guid> Doctors { get; private set; }
 
 
@@ -14,13 +15,13 @@ namespace Departments.Departments.Models
         //add working shifts 
 
 
-        public static Department Create(string name, string description, Guid headOfDepartment)
+        public static Department Create(string name, string description)
         {
 
             //validate incoming request 
             ArgumentException.ThrowIfNullOrEmpty(name);
             ArgumentException.ThrowIfNullOrEmpty(description);
-          
+
             //Create
             var entity = new Department
             {
@@ -28,10 +29,9 @@ namespace Departments.Departments.Models
                 Id = Guid.NewGuid(),
                 Name = name,
                 Description = description,
-                HeadOfDepartment = headOfDepartment,
-                Doctors = new List<Guid>() { headOfDepartment }
+                Doctors = new List<Guid>()
 
-               
+
             };
 
             return entity;
@@ -52,6 +52,38 @@ namespace Departments.Departments.Models
             HeadOfDepartment = headOfDepartment;
 
            
+        }
+
+        public void AssignHeadOfDepartment(Guid headOfDepartment)
+        {
+            if(!Doctors.Any(s=> s == headOfDepartment))
+            {
+                throw new ArgumentException("Doctor should be registered as part of the department!");
+            }
+
+            HeadOfDepartment = headOfDepartment;
+            
+            //create domain event to notify doctor's module
+            AddDomainEvent(new HeadOfDepartmentAssignedDomainEvent(headOfDepartment));
+
+        }
+
+        public void AddDoctorToDepartment(Guid DoctorId)
+        {
+            if (!Doctors.Any(s => s == DoctorId))
+            {
+                Doctors.Add(DoctorId);
+            }
+
+        }
+
+        public void RemoveDoctorFromDepartment(Guid DoctorId)
+        {
+            if (Doctors.Any(s => s == DoctorId))
+            {
+                Doctors.Remove(DoctorId);
+            }
+
         }
 
     }

@@ -37,7 +37,7 @@ namespace Doctors.Doctors.Features.CreateDoctor
 
         private Doctor CreateNewDoctor(DoctorDto DoctorDto) 
         {
-            var doctor =  Doctor.Create(DoctorDto);
+            var doctor =  Doctor.Create(DoctorDto.Name, DoctorDto.Surname, DoctorDto.DepartmentId, DoctorDto.SpecializationId, DoctorDto.WorkingStartDate, DoctorDto.GraduatedUniversity);
             return doctor;
                 
         }

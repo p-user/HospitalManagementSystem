@@ -1,8 +1,8 @@
 using Departments;
 using FluentValidation;
-using Shared.Behaviors;
 using Shared.Exceptions;
-using System.Reflection;
+using Shared.Messaging.Extentions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +29,9 @@ builder.Services.AddValidatorsFromAssemblies([doctorsAssembly,departmentsAssembl
 
 //add MediatR
 builder.Services.AddMediatRDromAssemblies(doctorsAssembly, departmentsAssembly);
+
+//add masstransit
+builder.Services.AddMassTransitForAssemblies(doctorsAssembly, departmentsAssembly);
 
 
 

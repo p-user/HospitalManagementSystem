@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Doctors.Contracts.Doctors.Features.GetDoctorById;
 
 namespace Doctors.Doctors.Features.GetDoctorById
 {
-    public record GetDoctorByIdQuery(Guid Id) :IRequest<GetDoctorByIdQueryResponse>;
-    public record GetDoctorByIdQueryResponse(DoctorDto Entity);
     public class GetDoctorByIdQueryHandler(DoctorsDbContext doctorsDbContext) : IRequestHandler<GetDoctorByIdQuery, GetDoctorByIdQueryResponse>
     {
         public async  Task<GetDoctorByIdQueryResponse> Handle(GetDoctorByIdQuery request, CancellationToken cancellationToken)

@@ -12,10 +12,10 @@ namespace Doctors.Doctors.Validators
             RuleFor(x => x.Name).NotEmpty().WithMessage($"{nameof(DoctorDto.Name)} must not be empty");
             RuleFor(x => x.GraduatedUniversity).NotEmpty().WithMessage($"{nameof(DoctorDto.GraduatedUniversity)} must not be empty");
             RuleFor(x => x.DepartmentId).NotEmpty().WithMessage($"{nameof(DoctorDto.DepartmentId)} must not be empty");
-            RuleFor(x => x.Specialization).NotEmpty().WithMessage($"{nameof(DoctorDto.Specialization)} must not be empty");
+            RuleFor(x => x.SpecializationId).NotEmpty().WithMessage($"{nameof(DoctorDto.SpecializationId)} must not be empty");
             RuleFor(x => x.Surname).NotEmpty().WithMessage($"{nameof(DoctorDto.Surname)} must not be empty");
 
-            RuleFor(s => s.Specialization).MustAsync(CheckIfExits).WithMessage("Specialization not registered!");
+            RuleFor(s => s.SpecializationId).MustAsync(CheckIfExits).WithMessage("Specialization not registered!");
         }
 
         private async Task<bool> CheckIfExits(Guid guid, CancellationToken token)

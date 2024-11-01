@@ -1,4 +1,4 @@
-﻿using Doctors.Doctors.Features.DeleteDoctor;
+﻿using Doctors.Contracts.Doctors.Features.GetDoctorById;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Doctors.Doctors.Features.GetDoctorById
@@ -16,7 +16,7 @@ namespace Doctors.Doctors.Features.GetDoctorById
                 return Results.Ok(response);
             }).WithDescription("Retrieve Doctor entity")
                 .WithName("GetDoctorById")
-                .Produces<DeleteDoctorResponse>(StatusCodes.Status200OK)
+                .Produces<GetDoctorByIdResponse>(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status400BadRequest);
         }
     }

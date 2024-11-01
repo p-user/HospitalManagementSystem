@@ -1,13 +1,11 @@
-﻿using Doctors.Doctors.Dtos;
-
-
+﻿
 namespace Shared.Data.Seed
 {
     public static class InitialData
     {
         public static IEnumerable<Specialization> Specializations => new List<Specialization>
         {
-             Specialization.Create(name: "Cardiologist", description: "Specializes in diagnosing and treating heart conditions and diseases."),
+            Specialization.Create(name: "Cardiologist", description: "Specializes in diagnosing and treating heart conditions and diseases."),
             Specialization.Create(name: "Neurologist", description: "Focuses on disorders of the brain, spinal cord, and nerves."),
             Specialization.Create(name : "Orthopedic Surgeon", description : "Treats injuries and conditions of the musculoskeletal system."),
             Specialization.Create(name : "Pediatrician", description : "Provides medical care for infants, children, and adolescents."),

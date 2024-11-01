@@ -7,7 +7,7 @@ namespace Doctors.Doctors.Dtos
      string Name ,
      string Surname ,
      Guid DepartmentId ,
-     Guid Specialization ,
+     Guid SpecializationId ,
      DateOnly WorkingStartDate ,
      string GraduatedUniversity 
        );
