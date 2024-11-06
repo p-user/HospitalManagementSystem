@@ -9,7 +9,8 @@ namespace Doctors.Doctors.Dtos
      Guid DepartmentId ,
      Guid SpecializationId ,
      DateOnly WorkingStartDate ,
-     string GraduatedUniversity 
+     string GraduatedUniversity,
+     string Email
        );
 
     public record DoctorFeedDto
@@ -20,5 +21,6 @@ namespace Doctors.Doctors.Dtos
      string Specialization,
      DateOnly WorkingStartDate,
      string GraduatedUniversity
+     //string Email
      );
 }

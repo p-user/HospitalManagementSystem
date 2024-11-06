@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Appointments\Appointments\Appointments.csproj" />
+    <ProjectReference Include="..\..\Modules\Authentication\Authentication\Authentication.csproj" />
     <ProjectReference Include="..\..\Modules\Departments\Departments\Departments.csproj" />
     <ProjectReference Include="..\..\Modules\Doctors\Doctors\Doctors.csproj" />
     <ProjectReference Include="..\..\Modules\Patients\Patients\Patients.csproj" />

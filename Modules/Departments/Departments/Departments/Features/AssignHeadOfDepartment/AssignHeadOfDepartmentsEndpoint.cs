@@ -11,12 +11,12 @@ namespace Departments.Departments.Features.AssignHeadOfDepartment
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/departments/{DepartmentId}/AssignHeadOfDepartment", async ([FromRoute] Guid DepartmentId, [FromBody]AssignHeadOfDepartmentsRequest request, ISender sender) =>
+            app.MapPost("/admin/departments/{Id}/assignHeadOfDepartment", async ([FromRoute] Guid Id, [FromBody]AssignHeadOfDepartmentsRequest request, ISender sender) =>
             {
-                var command = new AssignHeadOfDepartmentCommand(DepartmentId, request.DoctorId);
+                var command = new AssignHeadOfDepartmentCommand(Id, request.DoctorId);
                 var result = await sender.Send(command);
                 var response = result.Adapt<AssignHeadOfDepartmentsResponse>();
-                return Results.Created($"/departments/{DepartmentId}", response);
+                return Results.Created($"/departments/{Id}", response);
             }).WithDescription("Assign the chief doctor of department")
             .WithName("AssignHeadOfDepartment")
             .ProducesProblem(StatusCodes.Status400BadRequest)

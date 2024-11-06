@@ -1,15 +1,10 @@
 ﻿
 using Departments.Contracts.Departments.Features.GetDepartment;
+using Doctors.Contracts.Doctors.Features.CreateDoctor;
 using FluentValidation;
 
 namespace Doctors.Doctors.Features.CreateDoctor
 {
-
-    public record CreateDoctorCommand(DoctorDto DoctorDto  ) : IRequest<CreateDoctorResult>;
-
-
-    public record CreateDoctorResult(Guid Id);
-
 
     public class CreateDoctorCommandHandler(DoctorsDbContext _dbContext, IValidator<DoctorDto> validator, ISender sender) : IRequestHandler<CreateDoctorCommand, CreateDoctorResult>
     {
@@ -37,7 +32,7 @@ namespace Doctors.Doctors.Features.CreateDoctor
 
         private Doctor CreateNewDoctor(DoctorDto DoctorDto) 
         {
-            var doctor =  Doctor.Create(DoctorDto.Name, DoctorDto.Surname, DoctorDto.DepartmentId, DoctorDto.SpecializationId, DoctorDto.WorkingStartDate, DoctorDto.GraduatedUniversity);
+            var doctor =  Doctor.Create(DoctorDto.Name, DoctorDto.Surname, DoctorDto.DepartmentId, DoctorDto.SpecializationId, DoctorDto.WorkingStartDate, DoctorDto.GraduatedUniversity,DoctorDto.Email);
             return doctor;
                 
         }

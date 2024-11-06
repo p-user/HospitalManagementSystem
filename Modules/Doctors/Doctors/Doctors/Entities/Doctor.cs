@@ -13,12 +13,15 @@ namespace Doctors.Doctors.Entities
         public DateOnly WorkingStartDate { get; private set; }
         public string GraduatedUniversity { get; private set; } = default!;
 
+        //from authentication  module
+        public string Email { get; private set; }
+
         //from departments module
         public bool IsHeadOfDepartment { get; private set; } = false; 
 
 
 
-        public static Doctor Create(string name, string surname, Guid departmentId, Guid specializationId, DateOnly workingStartDate, string graduatedUniversity)
+        public static Doctor Create(string name, string surname, Guid departmentId, Guid specializationId, DateOnly workingStartDate, string graduatedUniversity,string email)
         {
 
             //validate incoming request 
@@ -39,6 +42,7 @@ namespace Doctors.Doctors.Entities
                 SpecializationId = specializationId,
                 WorkingStartDate = workingStartDate,
                 GraduatedUniversity = graduatedUniversity,
+                Email = email
             };
 
             doctor.AddDomainEvent(new DoctorAddedToDepartmentDomainEvent(doctor)); 

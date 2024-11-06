@@ -1,0 +1,15 @@
+﻿global using Microsoft.AspNetCore.Identity;
+global using Shared.DDD;
+global using Authentication.Authentication.Entities;
+global using Authentication.Data;
+global using Authentication.Data.Seed;
+global using Microsoft.EntityFrameworkCore.Diagnostics;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Shared.Data.Interceptors;
+global using Shared.Data.Seed;
+global using Carter;
+global using MediatR;
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.Routing;
+global using Shared.Exceptions;

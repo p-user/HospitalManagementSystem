@@ -44,7 +44,8 @@ namespace Doctors.Data.Seed
                        departmentId: departmentId,
                        specializationId: specializationId,
                        workingStartDate: item.WorkingStartDate,
-                       graduatedUniversity: item.GraduatedUniversity
+                       graduatedUniversity: item.GraduatedUniversity,
+                       email: "testc@gmail.com"
                      ));
 
                     
