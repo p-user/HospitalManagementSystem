@@ -3,10 +3,6 @@ using Microsoft.AspNetCore.Builder;
 using Shared.Data;
 using Microsoft.EntityFrameworkCore;
 using Authentication.Data.Constants;
-using Duende.IdentityServer.Services;
-using Authentication.Authentication;
-using Authentication.Data.Configurations;
-using Duende.IdentityServer.Test;
 
 namespace Authentication
 {
@@ -31,14 +27,7 @@ namespace Authentication
                         .AddEntityFrameworkStores<AuthenticationDbContext>()
                         .AddDefaultTokenProviders();
 
-            services.AddScoped<IProfileService, CustomProfileService>();
-
-
-
-            services.AddIdentityServer()
-            .AddInMemoryIdentityResources(Config.IdentityResources)
-            .AddInMemoryApiScopes(Config.ApiScopes)
-            .AddInMemoryClients(Config.Clients);
+  
 
 
 

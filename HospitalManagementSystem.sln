@@ -33,11 +33,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Departments.Contracts", "Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Messaging", "Shared\Shared.Messaging\Shared.Messaging.csproj", "{ED53A503-E246-449D-B2CE-5C536B13CF57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doctors.Contracts", "Modules\Doctors\Doctors.Contracts\Doctors.Contracts.csproj", "{403010D6-1437-4366-8B5A-8A318ECCA393}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doctors.Contracts", "Modules\Doctors\Doctors.Contracts\Doctors.Contracts.csproj", "{403010D6-1437-4366-8B5A-8A318ECCA393}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{05454777-1DC2-41F4-B322-9222CDD528C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "Modules\Authentication\Authentication\Authentication.csproj", "{A03DD394-4DA2-403E-BA4E-CA41F464E0E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "Modules\Authentication\Authentication\Authentication.csproj", "{A03DD394-4DA2-403E-BA4E-CA41F464E0E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "Modules\Authentication\IdentityServer\IdentityServer.csproj", "{D258944E-FCBC-440D-B5C8-2A2D3BA6CB71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,10 @@ Global
 		{A03DD394-4DA2-403E-BA4E-CA41F464E0E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A03DD394-4DA2-403E-BA4E-CA41F464E0E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A03DD394-4DA2-403E-BA4E-CA41F464E0E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D258944E-FCBC-440D-B5C8-2A2D3BA6CB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D258944E-FCBC-440D-B5C8-2A2D3BA6CB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D258944E-FCBC-440D-B5C8-2A2D3BA6CB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D258944E-FCBC-440D-B5C8-2A2D3BA6CB71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +111,7 @@ Global
 		{403010D6-1437-4366-8B5A-8A318ECCA393} = {32FDE85C-D8D8-4DEC-B8F0-6BC8CA17510D}
 		{05454777-1DC2-41F4-B322-9222CDD528C3} = {A2D07A19-D830-4D59-A558-3B09689C69C7}
 		{A03DD394-4DA2-403E-BA4E-CA41F464E0E5} = {05454777-1DC2-41F4-B322-9222CDD528C3}
+		{D258944E-FCBC-440D-B5C8-2A2D3BA6CB71} = {05454777-1DC2-41F4-B322-9222CDD528C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {38563598-BD0F-470F-AB11-10E2D77A132D}

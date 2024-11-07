@@ -45,18 +45,19 @@ builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddSharedServices(builder.Configuration);
 builder.Services.AddHttpClient();
 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = "https://localhost:5005";
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateAudience = false,
+        };
+    });
+
 
 builder.Services.AddControllers();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowSwaggerUI", builder =>
-    {
-        builder.WithOrigins("https://localhost:7157") 
-               .AllowAnyHeader()
-               .AllowAnyMethod();
-    });
-});
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -71,8 +72,8 @@ builder.Services.AddSwaggerGen(options =>
         {
             AuthorizationCode = new OpenApiOAuthFlow
             {
-                AuthorizationUrl = new Uri("https://localhost:5001/connect/authorize"),
-                TokenUrl = new Uri("https://localhost:5001/connect/token")
+                AuthorizationUrl = new Uri("https://localhost:5005/connect/authorize"),
+                TokenUrl = new Uri("https://localhost:5005/connect/token")
             }
         }
     });
@@ -93,15 +94,14 @@ builder.Services.AddSwaggerGen(options =>
     });
 
 });
+
+
 var app = builder.Build();
 app.MapCarter();
-app.UseCors("AllowSwaggerUI");
 
 app.UseSwaggerUI(options =>
 {
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Hospital Management API V1");
-    options.OAuthClientId("swagger");
-    options.OAuthAppName("Swagger UI");
+   
 });
 
 app.UseSerilogRequestLogging();
@@ -116,12 +116,15 @@ app.UseAppointmentsModule();
 
 if (app.Environment.IsDevelopment())
 {
+   
     app.UseSwagger();
     app.UseSwaggerUI();
+
 }
 
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

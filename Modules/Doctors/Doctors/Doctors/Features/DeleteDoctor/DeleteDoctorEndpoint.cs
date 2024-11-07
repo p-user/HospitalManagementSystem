@@ -6,7 +6,7 @@ namespace Doctors.Doctors.Features.DeleteDoctor
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapDelete("/doctors/{id}", async (Guid id, ISender sender) =>
+            app.MapDelete("/admin/doctors/{id}", async (Guid id, ISender sender) =>
             {
                 var command = new DeleteDoctorCommand(id);
                 var result = await sender.Send(command);

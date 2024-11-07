@@ -18,10 +18,9 @@ namespace Authentication.Authentication.Features.RegisterDoctor
         {
             app.MapPost("/admin/registerDoctor", async ([FromBody]DoctorDto request, ISender sender) =>
             {
-                //var command = request.Adapt<RegisterDoctorDto>();
                 var command = new RegisterDoctorDto(request);
                 var result = await sender.Send(command);
-                var response = result.Adapt<RegisterDoctorResponse>();
+                var response = result.Adapt<CreateDoctorResponse>();
                 return Results.Created($"/admin", response);
             }).WithDescription("Create doctor entity")
             .WithName("CreateDoctor")
