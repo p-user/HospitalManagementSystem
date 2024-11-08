@@ -10,11 +10,12 @@
     <ProjectReference Include="..\..\..\Shared\Shared.Messaging\Shared.Messaging.csproj" />
     <ProjectReference Include="..\..\..\Shared\Shared\Shared.csproj" />
     <ProjectReference Include="..\..\Doctors\Doctors.Contracts\Doctors.Contracts.csproj" />
-    <ProjectReference Include="..\IdentityServer\IdentityServer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Duende.AccessTokenManagement.OpenIdConnect" Version="3.0.1" />
     <PackageReference Include="Duende.IdentityServer" Version="7.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
   </ItemGroup>
 

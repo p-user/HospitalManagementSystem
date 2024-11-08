@@ -5,31 +5,43 @@ using System.Security.Claims;
 
 namespace Authentication.Authentication
 {
-    public class CustomProfileService : IProfileService
+    public class ProfileService : IProfileService
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public CustomProfileService(UserManager<ApplicationUser> userManager)
+        public ProfileService(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
 
         public async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
+
+            var claims = await GetClaimsAsync(context);
+           context.IssuedClaims.AddRange(claims);
+
+        }
+
+        private async Task<List<Claim>> GetClaimsAsync(ProfileDataRequestContext context)
+        {
+            var test = context.Subject.Claims.ToList();
             var user = await _userManager.GetUserAsync(context.Subject);
             var roles = await _userManager.GetRolesAsync(user);
 
-          
-            var claims = new List<Claim>
-        {
-            new Claim("role", roles.FirstOrDefault()),
-            new Claim("email", user.Email)
-        };
+            //add additinal claims
 
-            context.AddRequestedClaims(claims);
+            var claims = new List<Claim>
+                {
+                    new Claim("role", roles.FirstOrDefault()),
+                    new Claim("email", user.Email),
+                    new Claim("username", user.UserName),//todo: add department maybe??
+                };
+            return claims;
         }
 
-       
+
+
+
         public Task IsActiveAsync(IsActiveContext context)
         {
             context.IsActive = true;

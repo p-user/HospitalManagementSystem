@@ -48,7 +48,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
-        options.Authority = "https://localhost:5005";
+        options.Authority = builder.Configuration.GetSection("IdentityServer").Value;
         options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
         {
             ValidateAudience = false,
