@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Shared.Exceptions;
 using Shared.Services;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Authentication.Authentication.Features.RegisterDoctor
 {
@@ -33,11 +34,12 @@ namespace Authentication.Authentication.Features.RegisterDoctor
 
 
             var result = await _userManager.CreateAsync(doctor);
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(doctor, DefaultRoles.DoctorRole);
+                throw new ValidationException(result.Errors.FirstOrDefault().Description);
             }
 
+            await _userManager.AddToRoleAsync(doctor, DefaultRoles.DoctorRole);
             //create otp and send email
             var otpResponse = await sender.Send(new GenerateOTPCommand(doctor.Id));
             if (otpResponse.Succeded)

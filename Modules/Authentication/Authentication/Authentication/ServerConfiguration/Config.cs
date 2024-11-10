@@ -1,4 +1,5 @@
-﻿using Duende.IdentityServer.Models;
+﻿using Authentication.Authentication.ServerConfiguration;
+using Duende.IdentityServer.Models;
 
 namespace Authentication.ServerConfiguration
 {
@@ -11,19 +12,29 @@ namespace Authentication.ServerConfiguration
 
              new Client
             {
-                ClientId = "HospitalClient",
-                ClientSecrets = { new Secret("secret".Sha256()) },
+                ClientId = ConfigurationConstants.UserClient,
+                ClientSecrets = { new Secret(ConfigurationConstants.ClientSecret.Sha256()) }, 
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, 
                 AllowOfflineAccess = true,
                 // scopes that client has access to
-                AllowedScopes = { "hospitalApi" } //give the key of the scope
+                AllowedScopes = { "hospitalApi", "offline_access" } //give the key of the scope
+            },
+               new Client
+            {
+                ClientId = ConfigurationConstants.MachineToMachineClient,
+                ClientSecrets = { new Secret(ConfigurationConstants.ClientSecret.Sha256()) },
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                AllowOfflineAccess = true,
+                // scopes that client has access to
+                AllowedScopes = { "hospitalApi", "offline_access" } //give the key of the scope
             },
 
           };
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("hospitalApi", "Hospital API")
+                new ApiScope("hospitalApi", "Hospital API"),
+                new ApiScope("offline_access", "Offline access")
             };
 
         public static IEnumerable<IdentityResource> GetIdentityResources()

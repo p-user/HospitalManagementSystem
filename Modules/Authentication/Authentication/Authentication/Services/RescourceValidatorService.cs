@@ -1,6 +1,7 @@
 ﻿
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Validation;
+using IdentityModel;
 using System.Security.Claims;
 
 namespace Authentication.Authentication.Services
@@ -23,7 +24,11 @@ namespace Authentication.Authentication.Services
                 context.Result = new GrantValidationResult(
                     subject: user.Id.ToString(),
                     authenticationMethod: "password",
-                    claims: new List<Claim> { new Claim("username", user.UserName) });
+                    claims: new List<Claim> {
+                        new Claim(
+                            JwtClaimTypes.Email, user.UserName
+                            ) 
+                    });
             }
             else
             {

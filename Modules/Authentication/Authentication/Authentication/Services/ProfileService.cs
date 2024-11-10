@@ -1,9 +1,10 @@
 ﻿using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Services;
+using IdentityModel;
 using System.Security.Claims;
 
 
-namespace Authentication.Authentication
+namespace Authentication.Authentication.Services
 {
     public class ProfileService : IProfileService
     {
@@ -24,18 +25,23 @@ namespace Authentication.Authentication
 
         private async Task<List<Claim>> GetClaimsAsync(ProfileDataRequestContext context)
         {
-            var test = context.Subject.Claims.ToList();
-            var user = await _userManager.GetUserAsync(context.Subject);
+            var userId = context.Subject.FindFirst(JwtClaimTypes.Subject)?.Value;
+            var user = await _userManager.FindByIdAsync(userId);
             var roles = await _userManager.GetRolesAsync(user);
 
             //add additinal claims
 
             var claims = new List<Claim>
                 {
-                    new Claim("role", roles.FirstOrDefault()),
-                    new Claim("email", user.Email),
-                    new Claim("username", user.UserName),//todo: add department maybe??
+                    
+                    new Claim(JwtClaimTypes.Email, user.Email),
+                    new Claim(JwtClaimTypes.PreferredUserName, user.UserName),
                 };
+
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(JwtClaimTypes.Role, role));
+            }
             return claims;
         }
 

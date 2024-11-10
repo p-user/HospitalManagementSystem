@@ -23,7 +23,7 @@ namespace Authentication.Authentication.Features.GenerateOTP
              await _userManager.UpdateAsync(user);
 
             //send email with the password
-            var emailText = $"Please Login in Hospital Management System with email {user.Email} and one-time-password {otp}." +
+            var emailText = $"Please Login in Hospital Management System with email {user.Email} and one-time-password :  {otp} ." +
                 $"Please remember this password can only be used once" +  $" and it it valid for only 15 min!";
 
             await emailService.SendEmail(toEmail: user.Email, subject: "Confirm Account", body: emailText, isBodyHTML: false);

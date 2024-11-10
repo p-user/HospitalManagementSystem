@@ -50,6 +50,7 @@ namespace Authentication
               .AddInMemoryApiScopes(Config.ApiScopes)
               .AddInMemoryIdentityResources(Config.GetIdentityResources())
               .AddProfileService<ProfileService>()
+              .AddResourceOwnerValidator<RescourceValidatorService>()
               .AddDeveloperSigningCredential();
 
           
