@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.AspNetCore.Identity;
+
 namespace Authentication.Authentication.Features.VerifyOTP
 {
     public record VerifyOtpLoginCommand(string Email, string Password, string Otp) : IRequest<VerifyOtpLoginReponse>;
@@ -13,6 +15,8 @@ namespace Authentication.Authentication.Features.VerifyOTP
             // Check OTP validation
             var isValidOtp = await _userManager.VerifyUserTokenAsync(user, TokenOptions.DefaultProvider, "OTP", request.Otp);
             user.VerifyOtp();
+            user.EmailConfirmed = true;
+            user.PasswordHash =_userManager.PasswordHasher.HashPassword(user,request.Password);
 
 
             //update db

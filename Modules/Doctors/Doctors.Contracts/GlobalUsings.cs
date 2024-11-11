@@ -1,2 +1,2 @@
-﻿global using Doctors.Doctors.Dtos;
+﻿global using Doctors.Contracts.Doctors.Dtos;
 global using MediatR;

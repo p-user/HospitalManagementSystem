@@ -1,8 +1,4 @@
 ﻿
-using Authentication.Data.Constants;
-using Authentication.DomainEvents;
-using System.Security.Claims;
-
 namespace Authentication.Authentication.Entities
 {
     public class ApplicationUser : IdentityUser,IAggregate<string>
@@ -16,16 +12,7 @@ namespace Authentication.Authentication.Entities
         public DateTime? OtpExpiration { get; set; }
         public bool IsOtpVerified { get; private set; }
 
-        //Roles
-        private readonly List<ApplicationUserRole> _userRoles = new();
-        public IReadOnlyCollection<ApplicationUserRole> UserRoles => _userRoles.AsReadOnly();
-
-        //claims
-        private readonly List<IdentityUserClaim<string>> _claims = new();
-        public IReadOnlyCollection<IdentityUserClaim<string>> Claims => _claims.AsReadOnly();
-
-
-      
+       
 
         public static ApplicationUser CreateUser(string email,string username = null, string password = null)
         {
@@ -52,39 +39,6 @@ namespace Authentication.Authentication.Entities
             }
         }
 
-        public void AddRole(ApplicationUserRole role)
-        {
-            if (!_userRoles.Contains(role))
-            {
-                _userRoles.Add(role);
-            }
-           
-
-        }
-
-        public void AddClaim(IdentityUserClaim<string> claim)
-        {
-            if (!_claims.Contains(claim))
-            {
-                _claims.Add(claim);
-            }
-        }
-
-        public void RemoveRole(ApplicationUserRole role)
-        {
-            if (_userRoles.Contains(role))
-            {
-                _userRoles.Remove(role);
-            }
-        }
-
-        public void RemoveClaim(IdentityUserClaim<string> claim)
-        {
-            if (_claims.Contains(claim))
-            {
-                _claims.Remove(claim);
-            }
-        }
 
 
         //EVENTS : IAggregate implementation

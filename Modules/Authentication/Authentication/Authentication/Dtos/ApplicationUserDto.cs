@@ -1,8 +1,4 @@
 ﻿
-
-using Authentication.Data.Constants;
-using System.ComponentModel.DataAnnotations;
-
 namespace Authentication.Authentication.Dtos
 {
     public record ApplicationUserDto

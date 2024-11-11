@@ -1,8 +1,4 @@
 ﻿
-using Authentication.Data.Constants;
-using Microsoft.AspNetCore.Identity;
-using Shared.Data.Seed;
-
 namespace Authentication.Data.Seed
 {
     public class AuthenticationSeed(IServiceProvider serviceProvider) : ISeedData

@@ -1,13 +1,10 @@
 ﻿
 using Shared.Data;
 using Microsoft.EntityFrameworkCore;
-using Authentication.Data.Constants;
 using Duende.IdentityServer.Services;
 using Authentication.Authentication.Services;
 using Duende.IdentityServer.Validation;
-using Authentication.Authentication;
-using Microsoft.AspNetCore.Authentication;
-using Authentication.Authentication.ServerConfiguration;
+using Authentication.ServerConfiguration;
 namespace Authentication
 {
     public static class AuthenticationModule

@@ -1,7 +1,5 @@
 ﻿
 
-using Authentication.Authentication.Dtos;
-using Authentication.Authentication.Features.RegisterUser;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Shared.Messaging.Events;

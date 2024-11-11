@@ -19,15 +19,15 @@ namespace Authentication.Authentication.Features.GenerateOTP
             // Generate OTP using Microsoft Identity
             var otp = await _userManager.GenerateUserTokenAsync(user, TokenOptions.DefaultProvider, "OTP");
 
-             user.OtpExpiration = DateTime.UtcNow.AddMinutes(15); 
-             await _userManager.UpdateAsync(user);
+            user.OtpExpiration = DateTime.UtcNow.AddMinutes(15);
+            await _userManager.UpdateAsync(user);
 
             //send email with the password
             var emailText = $"Please Login in Hospital Management System with email {user.Email} and one-time-password :  {otp} ." +
-                $"Please remember this password can only be used once" +  $" and it it valid for only 15 min!";
+                $"Please remember this password can only be used once" + $" and it it valid for only 15 min!";
 
             await emailService.SendEmail(toEmail: user.Email, subject: "Confirm Account", body: emailText, isBodyHTML: false);
-           
+
             return new GenerateOTPResponse(true);
         }
     }

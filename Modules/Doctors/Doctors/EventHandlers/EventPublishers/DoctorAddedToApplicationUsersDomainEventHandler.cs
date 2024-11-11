@@ -1,5 +1,4 @@
 ﻿using Doctors.DomainEvents;
-using Doctors.Events;
 using MassTransit;
 using Shared.Constants;
 using Shared.Messaging.Events;

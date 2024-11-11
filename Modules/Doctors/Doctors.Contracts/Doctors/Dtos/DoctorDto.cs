@@ -2,16 +2,15 @@
 {
     public record DoctorDto
     {
-        public string Name;
-        public string Surname;
-        public Guid DepartmentId;
-        public Guid SpecializationId;
-        public DateOnly WorkingStartDate;
-        public string GraduatedUniversity;
-        public string Email;
+        public string Name { get; init; }
+        public string Surname { get; init; }
+        public Guid DepartmentId { get; init; }
+        public Guid SpecializationId { get; init; }
+        public DateOnly WorkingStartDate { get; init; }
+        public string GraduatedUniversity { get; init; }
+        public string Email { get; init; }
 
-    }
-        ;
+    };
 
     public record DoctorFeedDto
     (

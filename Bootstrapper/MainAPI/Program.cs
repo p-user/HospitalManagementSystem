@@ -1,6 +1,7 @@
 using Authentication;
 using Departments;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using Shared.Exceptions;
@@ -45,15 +46,19 @@ builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 builder.Services.AddSharedServices(builder.Configuration);
 builder.Services.AddHttpClient();
 
-builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer("Bearer", options =>
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer("Bearer", options =>
+{
+    options.Authority = builder.Configuration.GetSection("IdentityServer").Value;
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
     {
-        options.Authority = builder.Configuration.GetSection("IdentityServer").Value;
-        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-        {
-            ValidateAudience = false,
-        };
-    });
+        ValidateAudience = false,
+    };
+});
 
 
 builder.Services.AddControllers();
@@ -63,35 +68,37 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen(options =>
+//chat code
+builder.Services.AddSwaggerGen(c =>
 {
-    //options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-    //{
-    //    Type = SecuritySchemeType.OAuth2,
-    //    Flows = new OpenApiOAuthFlows
-    //    {
-    //        AuthorizationCode = new OpenApiOAuthFlow
-    //        {
-    //            AuthorizationUrl = new Uri("https://localhost:5005/connect/authorize"),
-    //            TokenUrl = new Uri("https://localhost:5005/connect/token")
-    //        }
-    //    }
-    //});
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
 
-    //options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    //{
-    //    {
-    //        new OpenApiSecurityScheme
-    //        {
-    //            Reference = new OpenApiReference
-    //            {
-    //                Type = ReferenceType.SecurityScheme,
-    //                Id = "oauth2"
-    //            }
-    //        },
-    //        new List<string>()
-    //    }
-    //});
+    // Define the security scheme
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\""
+    });
+
+    // Apply the security scheme to all endpoints
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
 
 });
 

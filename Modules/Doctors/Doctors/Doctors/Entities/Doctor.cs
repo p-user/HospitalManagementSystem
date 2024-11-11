@@ -1,6 +1,5 @@
 ﻿using Doctors.Contracts.Doctors.Dtos;
 using Doctors.DomainEvents;
-using Doctors.Events;
 using Shared.DDD;
 
 namespace Doctors.Doctors.Entities
