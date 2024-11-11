@@ -74,6 +74,7 @@ namespace Doctors.Doctors.Entities
             }
         }
 
+        //to be revised 
         public static Doctor Create(DoctorFeedDto dto, Guid SpecializationId)
         {
 

@@ -20,8 +20,8 @@ namespace Doctors.Doctors.Features.CreateDoctor
             .WithDescription("Create doctor entity")
             .WithName("CreateDoctor")
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .Produces<CreateDoctorResponse>(StatusCodes.Status201Created);
-            //.RequireAuthorization(); -> set adminOnly
+            .Produces<CreateDoctorResponse>(StatusCodes.Status201Created)
+            .RequireAuthorization("Admin");
         }
     }
 }

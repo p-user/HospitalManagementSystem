@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Patients.Patients.Entities;
 using System.Reflection;
 
 namespace Patients.Data
@@ -9,10 +10,12 @@ namespace Patients.Data
         {
         }
 
+        public DbSet<Patient> Patients => Set<Patient>();
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.HasDefaultSchema("Patients");
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); //toDo set a specific class for model validation
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); 
             base.OnModelCreating(builder);
         }
     }

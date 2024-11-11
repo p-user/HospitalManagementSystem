@@ -19,8 +19,7 @@ namespace Doctors.Doctors.Features.GetDoctors
                 .WithName("GetDoctors")
                 .WithDescription("Get all doctor entities")
                 .Produces<GetDoctorsResponse>(StatusCodes.Status200OK)
-
-                .RequireAuthorization();
+                .RequireAuthorization("AdminOnly"); //ToDo set constants for auth policies
                 
         }
     }

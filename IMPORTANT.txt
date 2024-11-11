@@ -1,0 +1,22 @@
+ 
+ 
+ ******** Commands for migrations***********************
+  
+  Add-migration AddPatient  -OutputDir Data/Migrations -Project Patients -StartupProject MainApi -Context PatientsDbContext 
+  Update-Database -Context PatientsDbContext
+  
+  *******************************************************
+  
+  
+  Workflow for authentication
+  ----------------------------
+  
+  A doctor should be registerd in the system by an admin. 
+  Admin sets the properties and calls the CreateDoctor Endpoint.
+  Via domain events and/or Integration events automatically an application user is registered.
+  After that, in the email provided for the doctor should come an otp (One-Time-Password) , valid only for 15 min.
+  With that OTP, user can login once and set the password .
+  
+  For patients, it does not require previous authorization.They can access CreatePatient Endpoint to generate the OTP and then
+  with the OTP  they can set their password.
+ 
