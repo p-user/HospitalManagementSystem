@@ -20,7 +20,8 @@ namespace Doctors.Doctors.Features.CreateSpecialization
                 .WithName("CreateSpecialization")
                 .Produces<CreateSpecializationResponse>(StatusCodes.Status201Created)
                 .Produces<CreateSpecializationResponse>(StatusCodes.Status200OK)
-                .ProducesProblem(StatusCodes.Status400BadRequest);
+                .ProducesProblem(StatusCodes.Status400BadRequest)
+                .RequireAuthorization();
         }
     }
 }

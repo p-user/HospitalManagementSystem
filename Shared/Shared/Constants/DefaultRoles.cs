@@ -1,5 +1,5 @@
 ﻿
-namespace Authentication.Data.Constants
+namespace Shared.Constants
 {
     public static class DefaultRoles
     {

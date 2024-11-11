@@ -1,8 +1,7 @@
-﻿
-using Shared.DDD;
+﻿using Shared.DDD;
 
-namespace Doctors.Events
+namespace Doctors.DomainEvents
 {
     public record DoctorChangedDepartmentDomainEvent(Doctor doctor) : IDomainEvent;
-    
+
 }

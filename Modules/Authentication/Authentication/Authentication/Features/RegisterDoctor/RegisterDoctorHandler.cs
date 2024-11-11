@@ -1,8 +1,8 @@
 ﻿
 using Authentication.Authentication.Features.GenerateOTP;
 using Authentication.Data.Constants;
+using Doctors.Contracts.Doctors.Dtos;
 using Doctors.Contracts.Doctors.Features.CreateDoctor;
-using Doctors.Doctors.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Shared.Exceptions;
@@ -19,11 +19,7 @@ namespace Authentication.Authentication.Features.RegisterDoctor
         public async Task<RegisterDoctorResponse> Handle(RegisterDoctorDto request, CancellationToken cancellationToken)
         {
 
-            var doctor = new ApplicationUser 
-            { 
-                UserName = request.DoctorDto.Email,
-                Email = request.DoctorDto.Email 
-            };
+            var doctor = CreateUser(request.DoctorDto.Email, null);
 
             //check if user exists
             var existingUser = await _userManager.FindByEmailAsync(doctor.Email);
@@ -44,7 +40,7 @@ namespace Authentication.Authentication.Features.RegisterDoctor
             var otpResponse = await sender.Send(new GenerateOTPCommand(doctor.Id));
             if (otpResponse.Succeded)
             {
-                var createDoctorObj = await sender.Send(new CreateDoctorCommand(request.DoctorDto));
+                var createDoctorObj = await sender.Send(new CreateDoctorCommand(request.DoctorDto));//toDo : raise event, remove snync communication
 
             }
             else
@@ -59,6 +55,11 @@ namespace Authentication.Authentication.Features.RegisterDoctor
 
 
 
+        }
+
+        private ApplicationUser CreateUser(string email, string passwod)
+        {
+            return ApplicationUser.CreateUser(email, passwod);
         }
 
       

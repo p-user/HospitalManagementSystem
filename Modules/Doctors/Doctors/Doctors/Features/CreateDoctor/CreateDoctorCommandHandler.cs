@@ -1,5 +1,6 @@
 ﻿
 using Departments.Contracts.Departments.Features.GetDepartment;
+using Doctors.Contracts.Doctors.Dtos;
 using Doctors.Contracts.Doctors.Features.CreateDoctor;
 using FluentValidation;
 

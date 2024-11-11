@@ -1,7 +1,7 @@
 ﻿using Departments.Departments.Events;
 using Shared.DDD;
 
-namespace Departments.Departments.Models
+namespace Departments.Departments.Entities
 {
     public class Department : Aggregate<Guid>
     {
@@ -51,18 +51,18 @@ namespace Departments.Departments.Models
             Description = description;
             HeadOfDepartment = headOfDepartment;
 
-           
+
         }
 
         public void AssignHeadOfDepartment(Guid headOfDepartment)
         {
-            if(!Doctors.Any(s=> s == headOfDepartment))
+            if (!Doctors.Any(s => s == headOfDepartment))
             {
                 throw new ArgumentException("Doctor should be registered as part of the department!");
             }
 
             HeadOfDepartment = headOfDepartment;
-            
+
             //create domain event to notify doctor's module
             AddDomainEvent(new HeadOfDepartmentAssignedDomainEvent(headOfDepartment));
 

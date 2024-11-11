@@ -1,4 +1,5 @@
-﻿using Doctors.Contracts.Doctors.Features.GetDoctorById;
+﻿using Doctors.Contracts.Doctors.Dtos;
+using Doctors.Contracts.Doctors.Features.GetDoctorById;
 
 namespace Doctors.Doctors.Features.GetDoctorById
 {

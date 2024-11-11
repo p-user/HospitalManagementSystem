@@ -1,4 +1,6 @@
 ﻿
+using Doctors.Contracts.Doctors.Dtos;
+
 namespace Doctors.Contracts.Doctors.Features.GetDoctorById
 {
     public record GetDoctorByIdQuery(Guid Id) : IRequest<GetDoctorByIdQueryResponse>;

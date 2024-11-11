@@ -1,10 +1,9 @@
-﻿
-using Doctors.Doctors.Features.SetHeadOfDepartment;
+﻿using Doctors.Doctors.Features.SetHeadOfDepartment;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Shared.Messaging.Events;
 
-namespace Doctors.EventHandlers.IntegrationEvents
+namespace Doctors.EventHandlers.EventConsumers
 {
     public class HeadOfDepartmentAssignedIntegrationEventConsumer(ISender sender, ILogger<HeadOfDepartmentAssignedIntegrationEventConsumer> logger) : IConsumer<HeadOfDepartmentAssignedIntegrationEvent>
     {

@@ -1,5 +1,6 @@
-﻿
-namespace Shared.Data.Seed
+﻿using Doctors.Contracts.Doctors.Dtos;
+
+namespace Doctors.Data.Seed
 {
     public static class InitialData
     {
@@ -105,6 +106,6 @@ namespace Shared.Data.Seed
 
 
 
-        
+
     }
 }

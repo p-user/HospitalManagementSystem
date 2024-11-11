@@ -1,4 +1,6 @@
-﻿using Doctors.Events;
+﻿using Doctors.Contracts.Doctors.Dtos;
+using Doctors.DomainEvents;
+using Doctors.Events;
 using Shared.DDD;
 
 namespace Doctors.Doctors.Entities
@@ -46,6 +48,7 @@ namespace Doctors.Doctors.Entities
             };
 
             doctor.AddDomainEvent(new DoctorAddedToDepartmentDomainEvent(doctor)); 
+            doctor.AddDomainEvent(new DoctorAddedToApplicationUsersDomainEvent(doctor)); 
 
             return doctor;
         }

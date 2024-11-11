@@ -1,5 +1,5 @@
-﻿using Doctors.Data;
-using Doctors.Doctors.Dtos;
+﻿using Doctors.Contracts.Doctors.Dtos;
+using Doctors.Data;
 using FluentValidation;
 using MediatR;
 using Shared.Exceptions;

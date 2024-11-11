@@ -1,4 +1,4 @@
-﻿using Departments.Departments.Models;
+﻿using Departments.Departments.Entities;
 
 namespace Departments.Data
 {

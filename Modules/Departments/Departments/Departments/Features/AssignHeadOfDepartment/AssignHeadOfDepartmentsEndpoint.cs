@@ -20,7 +20,8 @@ namespace Departments.Departments.Features.AssignHeadOfDepartment
             }).WithDescription("Assign the chief doctor of department")
             .WithName("AssignHeadOfDepartment")
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .Produces<AssignHeadOfDepartmentsResponse>(StatusCodes.Status200OK);
+            .Produces<AssignHeadOfDepartmentsResponse>(StatusCodes.Status200OK)
+            .RequireAuthorization();
         }
     }
 }

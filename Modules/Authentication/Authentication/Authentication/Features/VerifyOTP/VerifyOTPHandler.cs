@@ -1,32 +1,37 @@
 ﻿
-
-using Authentication.Authentication.Features.ConnectToken;
-
 namespace Authentication.Authentication.Features.VerifyOTP
 {
-    public record VerifyOtpLoginCommand(string Email, string Password, string Otp) : IRequest<ConnectTokenResponse>;
-    public class VerifyOTPHandler(SignInManager<ApplicationUser> _signInManager, UserManager<ApplicationUser> _userManager, ISender sender) : IRequestHandler<VerifyOtpLoginCommand, ConnectTokenResponse>
+    public record VerifyOtpLoginCommand(string Email, string Password, string Otp) : IRequest<VerifyOtpLoginReponse>;
+    public record VerifyOtpLoginReponse(string message);
+    public class VerifyOTPHandler(SignInManager<ApplicationUser> _signInManager, UserManager<ApplicationUser> _userManager, ISender sender) : IRequestHandler<VerifyOtpLoginCommand, VerifyOtpLoginReponse>
     {
-        public async  Task<ConnectTokenResponse> Handle(VerifyOtpLoginCommand request, CancellationToken cancellationToken)
+        public async  Task<VerifyOtpLoginReponse> Handle(VerifyOtpLoginCommand request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null) throw new NotFoundException("User not found.");
 
             // Check OTP validation
             var isValidOtp = await _userManager.VerifyUserTokenAsync(user, TokenOptions.DefaultProvider, "OTP", request.Otp);
-            if (!isValidOtp || user.OtpExpiration < DateTime.UtcNow)
+            user.VerifyOtp();
+
+
+            //update db
+            var result = await _userManager.UpdateAsync(user);
+
+            //set response
+            string message = string.Empty;
+            if (result.Succeeded)
             {
-                throw new Exception("OTP not valid!");
+                message = $"OTP was verified! you can procceed to login";
             }
-            var test = await _userManager.AddPasswordAsync(user, request.Password);
-            user.IsOtpVerified = true;
-            await _userManager.UpdateAsync(user);
+            else
+            {
 
+                message = $"OTP was not verified!";
+            }
 
-          
-            //get token
-            var tokenResponse = await sender.Send(new ConnectTokenRequest(request.Email, request.Password));
-            return tokenResponse;
+            return new VerifyOtpLoginReponse(message);
+
         }
 
         

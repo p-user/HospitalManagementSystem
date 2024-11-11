@@ -1,4 +1,4 @@
-﻿using Departments.Departments.Models;
+﻿using Departments.Departments.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Departments.Data.Configurations

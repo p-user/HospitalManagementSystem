@@ -1,4 +1,5 @@
-﻿using Doctors.Data;
+﻿using Doctors.Contracts.Doctors.Dtos;
+using Doctors.Data;
 using FluentValidation;
 
 namespace Doctors.Doctors.Validators

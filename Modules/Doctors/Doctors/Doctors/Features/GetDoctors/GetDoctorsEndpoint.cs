@@ -1,4 +1,5 @@
 ﻿
+using Doctors.Contracts.Doctors.Dtos;
 using Shared.Pagination;
 
 namespace Doctors.Doctors.Features.GetDoctors

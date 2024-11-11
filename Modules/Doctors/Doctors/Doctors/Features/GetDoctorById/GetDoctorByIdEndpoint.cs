@@ -1,4 +1,5 @@
-﻿using Doctors.Contracts.Doctors.Features.GetDoctorById;
+﻿using Doctors.Contracts.Doctors.Dtos;
+using Doctors.Contracts.Doctors.Features.GetDoctorById;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Doctors.Doctors.Features.GetDoctorById

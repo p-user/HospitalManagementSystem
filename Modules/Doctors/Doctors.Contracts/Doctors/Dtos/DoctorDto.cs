@@ -1,17 +1,17 @@
-﻿
-
-namespace Doctors.Doctors.Dtos
+﻿namespace Doctors.Contracts.Doctors.Dtos
 {
-   public record DoctorDto
-    (
-     string Name ,
-     string Surname ,
-     Guid DepartmentId ,
-     Guid SpecializationId ,
-     DateOnly WorkingStartDate ,
-     string GraduatedUniversity,
-     string Email
-       );
+    public record DoctorDto
+    {
+        public string Name;
+        public string Surname;
+        public Guid DepartmentId;
+        public Guid SpecializationId;
+        public DateOnly WorkingStartDate;
+        public string GraduatedUniversity;
+        public string Email;
+
+    }
+        ;
 
     public record DoctorFeedDto
     (

@@ -1,4 +1,4 @@
-﻿using Departments.Departments.Models;
+﻿using Departments.Departments.Entities;
 using Doctors.Contracts.Doctors.Features.GetDoctorById;
 
 namespace Departments.Departments.Features.AssignHeadOfDepartment

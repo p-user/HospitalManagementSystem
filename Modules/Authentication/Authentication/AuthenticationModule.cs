@@ -6,8 +6,8 @@ using Duende.IdentityServer.Services;
 using Authentication.Authentication.Services;
 using Duende.IdentityServer.Validation;
 using Authentication.Authentication;
-using Authentication.ServerConfiguration;
 using Microsoft.AspNetCore.Authentication;
+using Authentication.Authentication.ServerConfiguration;
 namespace Authentication
 {
     public static class AuthenticationModule
@@ -50,7 +50,6 @@ namespace Authentication
               .AddInMemoryApiScopes(Config.ApiScopes)
               .AddInMemoryIdentityResources(Config.GetIdentityResources())
               .AddProfileService<ProfileService>()
-              .AddResourceOwnerValidator<RescourceValidatorService>()
               .AddDeveloperSigningCredential();
 
           
