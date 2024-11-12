@@ -8,7 +8,7 @@ namespace Doctors.Doctors.Features.UpdateSpecialization
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPut("/specializations", async (UpdateSpecializationRequest request, ISender sender) =>
+            app.MapPut("/doctors/specializations", async (UpdateSpecializationRequest request, ISender sender) =>
             {
                 var toSendObj = new UpdateSpecializationCommand(request.SpecializationDto, request.Id);
                 var result = await sender.Send(toSendObj);

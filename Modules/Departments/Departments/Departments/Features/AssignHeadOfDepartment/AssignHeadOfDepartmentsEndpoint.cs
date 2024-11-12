@@ -11,7 +11,7 @@ namespace Departments.Departments.Features.AssignHeadOfDepartment
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/admin/departments/{Id}/assignHeadOfDepartment", async ([FromRoute] Guid Id, [FromBody]AssignHeadOfDepartmentsRequest request, ISender sender) =>
+            app.MapPost("/departments/{Id}/assignHeadOfDepartment", async ([FromRoute] Guid Id, [FromBody]AssignHeadOfDepartmentsRequest request, ISender sender) =>
             {
                 var command = new AssignHeadOfDepartmentCommand(Id, request.DoctorId);
                 var result = await sender.Send(command);

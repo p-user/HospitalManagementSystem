@@ -5,7 +5,7 @@ namespace Authentication.Authentication.Features.VerifyOTP
 {
     public record VerifyOtpLoginCommand(string Email, string Password, string Otp) : IRequest<VerifyOtpLoginReponse>;
     public record VerifyOtpLoginReponse(string message);
-    public class VerifyOTPHandler(SignInManager<ApplicationUser> _signInManager, UserManager<ApplicationUser> _userManager, ISender sender) : IRequestHandler<VerifyOtpLoginCommand, VerifyOtpLoginReponse>
+    public class VerifyOTPCommandHandler(SignInManager<ApplicationUser> _signInManager, UserManager<ApplicationUser> _userManager, ISender sender) : IRequestHandler<VerifyOtpLoginCommand, VerifyOtpLoginReponse>
     {
         public async  Task<VerifyOtpLoginReponse> Handle(VerifyOtpLoginCommand request, CancellationToken cancellationToken)
         {

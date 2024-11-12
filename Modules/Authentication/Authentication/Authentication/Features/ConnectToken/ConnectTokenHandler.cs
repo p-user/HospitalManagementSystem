@@ -9,7 +9,7 @@ namespace Authentication.Authentication.Features.ConnectToken
 {
     public record ConnectTokenRequest(string Email, string Password) : IRequest<ConnectTokenResponse>;
     public record ConnectTokenResponse(string AccessToken, string TokenType, string RefreshToken, int ExpiresIn);
-    public class ConnectTokenHandler(IHttpClientFactory _httpClientFactory, IConfiguration _configuration, IResourceOwnerPasswordValidator _passwordValidator, ITokenService _tokenService)
+    public class ConnectTokenHandler(IHttpClientFactory _httpClientFactory, IConfiguration _configuration)
         : IRequestHandler<ConnectTokenRequest, ConnectTokenResponse>
     {
         public async Task<ConnectTokenResponse> Handle(ConnectTokenRequest request, CancellationToken cancellationToken)

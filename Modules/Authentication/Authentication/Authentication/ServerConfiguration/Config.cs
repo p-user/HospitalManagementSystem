@@ -16,6 +16,9 @@ namespace Authentication.ServerConfiguration
                 ClientSecrets = { new Secret(ConfigurationConstants.ClientSecret.Sha256()) },
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 AllowOfflineAccess = true,
+                AccessTokenLifetime = 3600,
+                AbsoluteRefreshTokenLifetime = 2592000,
+                SlidingRefreshTokenLifetime = 1296000,
                 // scopes that client has access to
                 AllowedScopes = { "hospitalApi", "offline_access" } //give the key of the scope
             },

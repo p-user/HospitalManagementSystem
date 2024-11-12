@@ -11,7 +11,7 @@ namespace Departments.Departments.Features.GetDepartment
        
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/admin/departments/{id}", async ([FromRoute] Guid id, ISender sender) =>
+            app.MapGet("/departments/{id}", async ([FromRoute] Guid id, ISender sender) =>
             {
                 var result = await sender.Send(new GetDepartmentByIdQuery(id));
                 var response = result.Adapt<GetDepartmentByIdResponse>();

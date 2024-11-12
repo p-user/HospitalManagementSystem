@@ -23,21 +23,22 @@ builder.Services.AddPatientsModule(builder.Configuration);
 builder.Services.AddAppointmentsModule(builder.Configuration);
 
 var doctorsAssembly = typeof(DoctorsModule).Assembly;
+var patientsAssembly = typeof(PatientsModule).Assembly;
 var departmentsAssembly = typeof(DepartmentsModule).Assembly;
 var authenticationAssembly = typeof(AuthenticationModule).Assembly;
 var emailAssembly = typeof(Shared.Services.EmailService).Assembly;
 
 //add carter
-builder.Services.AddCarter(doctorsAssembly, departmentsAssembly, authenticationAssembly);
+builder.Services.AddCarter(doctorsAssembly, departmentsAssembly, authenticationAssembly, patientsAssembly);
 
 //add fluent validation
-builder.Services.AddValidatorsFromAssemblies([doctorsAssembly,departmentsAssembly, authenticationAssembly]);
+builder.Services.AddValidatorsFromAssemblies([doctorsAssembly,departmentsAssembly, authenticationAssembly, patientsAssembly]);
 
 //add MediatR
-builder.Services.AddMediatRDromAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly, emailAssembly);
+builder.Services.AddMediatRDromAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly, emailAssembly, patientsAssembly);
 
 //add masstransit
-builder.Services.AddMassTransitForAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly);
+builder.Services.AddMassTransitForAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly, patientsAssembly);
 
 
 

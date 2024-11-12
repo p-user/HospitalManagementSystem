@@ -11,7 +11,7 @@ namespace Departments.Departments.Features.CreateDepartment
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/admin/departments", async ([FromBody] CreateDepartmentRequest request, ISender sender) =>
+            app.MapPost("/departments", async ([FromBody] CreateDepartmentRequest request, ISender sender) =>
             {
                 var toSendEntity = new CreateDepartmentCommand(request.DepartmentDto);
                 var result = await sender.Send(toSendEntity);

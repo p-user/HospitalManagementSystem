@@ -13,6 +13,14 @@ namespace Patients.Patients.Entities
         public string Email { get; private set; }
         public string PhoneNumber { get; private set; }
 
+        //Allergies
+
+        private static List<Allergy> _allergies;
+        public IReadOnlyCollection<Allergy> Allergies => _allergies.AsReadOnly();
+
+        //MediaclRecords
+        public ICollection<MedicalRecord> MedicalRecords { get; private set; }
+
         public static Patient Create (string firstName, string lastName, DateTime dateOfBirth, string gender, string email, string phoneNumber)
         {
             //validate incoming request 
@@ -50,6 +58,41 @@ namespace Patients.Patients.Entities
             Gender = gender;
             Email = email;
             PhoneNumber = phoneNumber;
+        }
+
+        public static void AddAllergy(string allergyName, string allergyType, string reaction, DateTime dateReported)
+        {
+            var record = _allergies.FirstOrDefault(r => r.AllergyName.ToLower() == allergyName.ToLower());
+            if (record == null)
+            {
+                var allergy = new Allergy(allergyName, allergyType, reaction, dateReported);
+                _allergies.Add(allergy);
+            }
+        }
+
+        public static void RemoveAllergy(Allergy allergy)
+        {
+            if (_allergies.Contains(allergy))
+            {
+                _allergies.Remove(allergy);
+            }
+        }
+
+
+        public  void AddMedicalRecord(string title, string description, RecordType recordType)
+        {
+            var record = MedicalRecord.Create(this.Id, title, description,recordType);
+            MedicalRecords.Add(record);
+
+        }
+
+        public void RemoveMedicalRecord(Guid recordId)
+        {
+            var record = MedicalRecords.FirstOrDefault(r => r.Id == recordId);
+            if (record != null)
+            {
+                MedicalRecords.Remove(record);
+            }
         }
 
     }

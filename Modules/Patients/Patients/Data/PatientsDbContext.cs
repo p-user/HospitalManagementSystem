@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Patients.Patients.Entities;
+﻿using Patients.Patients.Entities;
 using System.Reflection;
 
 namespace Patients.Data
@@ -11,6 +10,7 @@ namespace Patients.Data
         }
 
         public DbSet<Patient> Patients => Set<Patient>();
+        public DbSet<MedicalRecord> MedicalRecords => Set<MedicalRecord>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
