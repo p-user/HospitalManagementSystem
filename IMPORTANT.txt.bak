@@ -22,17 +22,4 @@
   
   For patients, it does not require previous authorization.They can access CreatePatient Endpoint to generate the OTP and then
   with the OTP  they can set their password.
-  
-  
- Workflow For Appoinments
- -------------------------
-Doctor Assignment to Shift: Head of Department assigns a doctor to a shift within the Departments Module.
-
-AvailableSlot Definition: The doctor defines appointment slots within the shift’s time range.--> here we should configure
- communication between departments and appoinments !! TODO !
- 
-This process is handled by the Appointments Module, which ensures that the slots are valid within the assigned shift.
-
-
-Patient requests an appoinment while doctor can confirm or can refuse the appointment.
  

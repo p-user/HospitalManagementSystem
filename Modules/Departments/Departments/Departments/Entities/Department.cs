@@ -45,7 +45,7 @@ namespace Departments.Departments.Entities
             ArgumentException.ThrowIfNullOrEmpty(name);
             ArgumentException.ThrowIfNullOrEmpty(description);
 
-            //Create
+            //Update
 
             Name = name;
             Description = description;

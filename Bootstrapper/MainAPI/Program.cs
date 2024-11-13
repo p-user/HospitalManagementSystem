@@ -2,7 +2,6 @@ using Authentication;
 using Departments;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using Shared.Exceptions;
 using Shared.Messaging.Extentions;
