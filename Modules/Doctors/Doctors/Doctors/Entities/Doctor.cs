@@ -112,6 +112,21 @@ namespace Doctors.Doctors.Entities
         }
 
 
+        public void AddShiftToDoctor(Guid shiftId)
+        {
+            if (_workingShifts.Where(s=>s.ShiftId==shiftId).Any())
+            {
+                throw new ArgumentException("This doctor is already assigned in this shift!");
+            }
+
+            var shift = new WorkingShift(shiftId);
+            _workingShifts.Add(shift);
+
+           
+
+        }
+
+
 
 
     }

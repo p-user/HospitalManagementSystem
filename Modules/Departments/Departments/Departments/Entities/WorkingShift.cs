@@ -1,4 +1,5 @@
 ﻿
+using Departments.Departments.Events;
 using Shared.DDD;
 
 namespace Departments.Departments.Entities
@@ -15,21 +16,31 @@ namespace Departments.Departments.Entities
 
         public List<Guid> DoctorsOnDuty { get; private set; }
 
-
-        public void SetShiftDetails(ShiftName shiftName, DateTime date)
+        public static WorkingShift Create(Guid departmentId, ShiftName shiftName, DateTime dateTime)
         {
-            ShiftName = shiftName;
+            var entity = new WorkingShift
+            {
+                ShiftName = shiftName,
+                Date = dateTime,
+                DepartmentId = departmentId,
+            };
 
-            switch (shiftName)
+            entity.SetShiftDetails();
+            return entity;
+        }
+        public void SetShiftDetails()
+        {
+
+            switch (ShiftName)
             {
                 case ShiftName.Morning:
-                    StartTime = date.AddHours(8);  // Example: 8:00 AM
-                    EndTime = date.AddHours(16);   // Example: 4:00 PM
+                    StartTime = Date.AddHours(8);  // Example: 8:00 AM
+                    EndTime = Date.AddHours(16);   // Example: 4:00 PM
                     break;
 
                 case ShiftName.Night:
-                    StartTime = date.AddHours(20); // Example: 8:00 PM
-                    EndTime = date.AddHours(4).AddDays(1); // Example: 4:00 AM next day
+                    StartTime = Date.AddHours(20); // Example: 8:00 PM
+                    EndTime = Date.AddHours(4).AddDays(1); // Example: 4:00 AM next day
                     break;
 
                 default:
@@ -46,7 +57,8 @@ namespace Departments.Departments.Entities
 
             DoctorsOnDuty.Add(doctorId);
 
-            //TODO: notify doctor module via domain event
+            //notify doctor module via domain event
+            AddDomainEvent(new DoctorAddedToWorkingShiftDomainEvent(Id,doctorId));
 
         }
 
