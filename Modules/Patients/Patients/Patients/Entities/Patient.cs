@@ -15,11 +15,13 @@ namespace Patients.Patients.Entities
 
         //Allergies
 
-        private static List<Allergy> _allergies;
+        private static List<Allergy> _allergies= new();
         public IReadOnlyCollection<Allergy> Allergies => _allergies.AsReadOnly();
 
         //MediaclRecords
-        public ICollection<MedicalRecord> MedicalRecords { get; private set; }
+        private static List<MedicalRecord> _medicalRecords = new();
+        public IReadOnlyList<MedicalRecord> MedicalRecords => _medicalRecords.AsReadOnly();
+        
 
         public static Patient Create (string firstName, string lastName, DateTime dateOfBirth, string gender, string email, string phoneNumber)
         {
@@ -82,7 +84,7 @@ namespace Patients.Patients.Entities
         public  void AddMedicalRecord(string title, string description, RecordType recordType)
         {
             var record = MedicalRecord.Create(this.Id, title, description,recordType);
-            MedicalRecords.Add(record);
+            _medicalRecords.Add(record);
 
         }
 
@@ -91,7 +93,7 @@ namespace Patients.Patients.Entities
             var record = MedicalRecords.FirstOrDefault(r => r.Id == recordId);
             if (record != null)
             {
-                MedicalRecords.Remove(record);
+                _medicalRecords.Remove(record);
             }
         }
 

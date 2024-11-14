@@ -55,8 +55,8 @@ namespace Authentication
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("AdminOnly", policy => policy.RequireRole(DefaultRoles.AdminRole));
-                options.AddPolicy("DoctorOnly", policy => policy.RequireRole(DefaultRoles.DoctorRole));
+                options.AddPolicy(Policies.AdminOnly, policy => policy.RequireRole(DefaultRoles.AdminRole));
+                options.AddPolicy(Policies.DoctorOnly, policy => policy.RequireRole(DefaultRoles.DoctorRole));
             });
 
             services.AddScoped<ISeedData, AuthenticationSeed>();

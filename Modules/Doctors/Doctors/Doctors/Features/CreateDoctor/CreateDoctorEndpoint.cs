@@ -2,6 +2,7 @@
 using Doctors.Contracts.Doctors.Dtos;
 using Doctors.Contracts.Doctors.Features.CreateDoctor;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Constants;
 
 namespace Doctors.Doctors.Features.CreateDoctor
 {
@@ -21,7 +22,7 @@ namespace Doctors.Doctors.Features.CreateDoctor
             .WithName("CreateDoctor")
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .Produces<CreateDoctorResponse>(StatusCodes.Status201Created)
-            .RequireAuthorization("Admin");
+            .RequireAuthorization(Policies.AdminOnly);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using Shared.Constants;
+
 namespace Patients.Patients.Features.AddMedicalRecordToPatient
 {
     public class AddAllergyToMedicalRecordEndpoint : ICarterModule
@@ -19,7 +21,8 @@ namespace Patients.Patients.Features.AddMedicalRecordToPatient
             }).WithDescription("Add medical record to patient")
             .WithName("AddMedicalRecordToPatient")
             .Produces<bool>(StatusCodes.Status200OK)
-            .ProducesProblem(StatusCodes.Status400BadRequest);      
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .RequireAuthorization(Policies.DoctorOnly,Policies.AdminOnly);      
                 
         }
     }

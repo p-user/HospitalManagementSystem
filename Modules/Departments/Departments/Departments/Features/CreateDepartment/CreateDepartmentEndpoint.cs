@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Shared.Constants;
 
 namespace Departments.Departments.Features.CreateDepartment
 {
@@ -23,7 +24,8 @@ namespace Departments.Departments.Features.CreateDepartment
                 .Produces<CreateDepartmentResponse>(StatusCodes.Status200OK)
                 .Produces<CreateDepartmentResponse>(StatusCodes.Status201Created)
                 .Produces<CreateDepartmentResponse>(StatusCodes.Status400BadRequest)
-                ;
+                .RequireAuthorization(Policies.AdminOnly);
+            ;
         }
     }
 }

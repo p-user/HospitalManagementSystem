@@ -12,7 +12,10 @@ namespace Doctors.Data.Configurations
 
             builder.HasOne(d => d.Specialization)
            .WithMany(s => s.Doctors)
-           .HasForeignKey(d => d.SpecializationId); 
+           .HasForeignKey(d => d.SpecializationId);
+
+            builder.OwnsMany(d => d.WorkingShifts, s=>s.Property(d=>d.ShiftId).IsRequired()); //working shifts should be a complex type, we dont need other details
+                
         }
     }
 }

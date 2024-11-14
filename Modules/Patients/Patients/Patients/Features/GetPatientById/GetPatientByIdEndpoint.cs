@@ -1,5 +1,7 @@
 ﻿
 
+using Shared.Constants;
+
 namespace Patients.Patients.Features.GetPatientById
 {
     public class GetPatientByIdEndpoint : ICarterModule
@@ -13,7 +15,8 @@ namespace Patients.Patients.Features.GetPatientById
                 return Results.Ok(response);
             }).WithDescription("Get a specific patient")
             .Produces<PatientDto>(StatusCodes.Status200OK)
-            .WithName("GetPatient");
+            .WithName("GetPatient")
+            .RequireAuthorization(Policies.AdminOnly,Policies.DoctorOnly); 
         }
     }
 }

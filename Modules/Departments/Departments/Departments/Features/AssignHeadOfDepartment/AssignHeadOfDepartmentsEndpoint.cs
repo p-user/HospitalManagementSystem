@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Shared.Constants;
 
 namespace Departments.Departments.Features.AssignHeadOfDepartment
 {
@@ -21,7 +22,7 @@ namespace Departments.Departments.Features.AssignHeadOfDepartment
             .WithName("AssignHeadOfDepartment")
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .Produces<AssignHeadOfDepartmentsResponse>(StatusCodes.Status200OK)
-            .RequireAuthorization();
+            .RequireAuthorization(Policies.AdminOnly);
         }
     }
 }

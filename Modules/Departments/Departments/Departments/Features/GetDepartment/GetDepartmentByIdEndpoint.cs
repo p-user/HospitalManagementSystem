@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Shared.Constants;
 
 namespace Departments.Departments.Features.GetDepartment
 {
@@ -16,7 +17,8 @@ namespace Departments.Departments.Features.GetDepartment
                 var result = await sender.Send(new GetDepartmentByIdQuery(id));
                 var response = result.Adapt<GetDepartmentByIdResponse>();
                 return Results.Ok(response);
-            }).WithName("GetDepartment");
+            }).WithName("GetDepartment")
+             .RequireAuthorization(Policies.AdminOnly); 
            
         }
     }

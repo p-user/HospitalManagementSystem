@@ -25,19 +25,20 @@ var doctorsAssembly = typeof(DoctorsModule).Assembly;
 var patientsAssembly = typeof(PatientsModule).Assembly;
 var departmentsAssembly = typeof(DepartmentsModule).Assembly;
 var authenticationAssembly = typeof(AuthenticationModule).Assembly;
+var appoinmentAssembly = typeof(AppointmentsModule).Assembly;
 var emailAssembly = typeof(Shared.Services.EmailService).Assembly;
 
 //add carter
-builder.Services.AddCarter(doctorsAssembly, departmentsAssembly, authenticationAssembly, patientsAssembly);
+builder.Services.AddCarter(doctorsAssembly, departmentsAssembly, authenticationAssembly, patientsAssembly, appoinmentAssembly);
 
 //add fluent validation
-builder.Services.AddValidatorsFromAssemblies([doctorsAssembly,departmentsAssembly, authenticationAssembly, patientsAssembly]);
+builder.Services.AddValidatorsFromAssemblies([doctorsAssembly,departmentsAssembly, authenticationAssembly, patientsAssembly, appoinmentAssembly]);
 
 //add MediatR
-builder.Services.AddMediatRDromAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly, emailAssembly, patientsAssembly);
+builder.Services.AddMediatRDromAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly, emailAssembly, patientsAssembly, appoinmentAssembly);
 
 //add masstransit
-builder.Services.AddMassTransitForAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly, patientsAssembly);
+builder.Services.AddMassTransitForAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly, patientsAssembly, appoinmentAssembly);
 
 
 

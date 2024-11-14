@@ -14,6 +14,9 @@ namespace Departments.Departments.Entities
 
         //add working shifts 
 
+        public static List<WorkingShift> _workingShifts = new();
+        public IReadOnlyList<WorkingShift> WorkingShifts= _workingShifts.AsReadOnly();
+
 
         public static Department Create(string name, string description)
         {

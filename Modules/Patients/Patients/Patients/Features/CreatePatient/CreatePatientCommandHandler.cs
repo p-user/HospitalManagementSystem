@@ -1,7 +1,4 @@
 ﻿
-using MediatR;
-using Patients.Data;
-using Patients.Patients.Dtos;
 using Patients.Patients.Entities;
 
 namespace Patients.Patients.Features.CreatePatient
@@ -15,7 +12,7 @@ namespace Patients.Patients.Features.CreatePatient
             var entity = CreateNewPatient(request.Patient);
 
             _dbContext.Patients.Add(entity);
-            await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync(cancellationToken);
 
             //return obj
             return new CreatePatientCommandResponse(entity.Id);

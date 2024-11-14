@@ -9,6 +9,7 @@ namespace Departments.Data
         }
 
         public DbSet<Department> Departments => Set<Department>();
+        public DbSet<WorkingShift> WorkingShifts => Set<WorkingShift>();
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.HasDefaultSchema("Departments");

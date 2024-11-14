@@ -18,7 +18,10 @@ namespace Doctors.Doctors.Entities
         public string Email { get; private set; }
 
         //from departments module
-        public bool IsHeadOfDepartment { get; private set; } = false; 
+        public bool IsHeadOfDepartment { get; private set; } = false;
+
+        public static List<WorkingShift> _workingShifts = new();
+        public IReadOnlyCollection<WorkingShift> WorkingShifts= _workingShifts.AsReadOnly();
 
 
 

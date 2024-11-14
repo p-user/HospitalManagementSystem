@@ -1,4 +1,6 @@
 ﻿
+using Shared.Constants;
+
 namespace Patients.Patients.Features.AddAllegyToPatient
 {
     public class AddAllergyToPatientEndpoint : ICarterModule
@@ -14,8 +16,9 @@ namespace Patients.Patients.Features.AddAllegyToPatient
             }).WithDescription("Add Allergy to patient")
             .WithName("AddAllergyToPatient")
             .Produces<bool>(StatusCodes.Status200OK)
-            .ProducesProblem(StatusCodes.Status400BadRequest);      
-                
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .RequireAuthorization(Policies.DoctorOnly);
+
         }
     }
 }
