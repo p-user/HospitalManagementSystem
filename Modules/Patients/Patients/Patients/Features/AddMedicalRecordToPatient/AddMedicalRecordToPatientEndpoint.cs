@@ -22,7 +22,7 @@ namespace Patients.Patients.Features.AddMedicalRecordToPatient
             .WithName("AddMedicalRecordToPatient")
             .Produces<bool>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .RequireAuthorization(Policies.DoctorOnly,Policies.AdminOnly);      
+            .RequireAuthorization(Policies.DoctorOnly);      
                 
         }
     }

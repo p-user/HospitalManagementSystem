@@ -13,7 +13,7 @@ namespace Appointments.Appointments.Features.CreateAvailableSlot
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/appoinments/availableSlots", async ([FromBody] AvailableSlotDto dto, HttpContext context, ISender sender) =>
+            app.MapPost("/appointments/availableSlots", async ([FromBody] AvailableSlotDto dto, HttpContext context, ISender sender) =>
             {
                 var role = context.User?.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
                 if(role != DefaultRoles.AdminRole)
