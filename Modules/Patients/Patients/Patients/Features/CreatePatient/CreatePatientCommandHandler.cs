@@ -9,6 +9,11 @@ namespace Patients.Patients.Features.CreatePatient
     {
         public async Task<CreatePatientCommandResponse> Handle(CreatePatientCommand request, CancellationToken cancellationToken)
         {
+            var entityCheck = await _dbContext.Patients.FirstOrDefaultAsync(s => s.Email == request.Patient.Email);
+            if (entityCheck != null) 
+            {
+                throw new Exception($"A patient is already registered with this email");
+            }
             var entity = CreateNewPatient(request.Patient);
 
             _dbContext.Patients.Add(entity);

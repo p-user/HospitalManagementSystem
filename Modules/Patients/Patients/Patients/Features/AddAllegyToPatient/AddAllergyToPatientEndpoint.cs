@@ -7,9 +7,9 @@ namespace Patients.Patients.Features.AddAllegyToPatient
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/patients/{PatientId}/allergies", async ([FromRoute] Guid PatientId, AllergyDto allergy, ISender sender) =>
+            app.MapPost("/patients/{id}/allergies", async ([FromRoute] Guid id, AllergyDto allergy, ISender sender) =>
             {
-                var command = new AddAllegyToPatientCommand(PatientId, allergy);
+                var command = new AddAllegyToPatientCommand(id, allergy);
                 var response = await sender.Send(command);
                 return Results.Ok(response);
 

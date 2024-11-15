@@ -7,9 +7,9 @@ namespace Patients.Patients.Features.AddMedicalRecordToPatient
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/patients/{PatientId}/medicalrecords", async ([FromRoute] Guid PatientId, MedicalRecordDto record, ISender sender) =>
+            app.MapPost("/patients/{id}/medicalrecords", async ([FromRoute] Guid id, MedicalRecordDto record, ISender sender) =>
             {
-                if(PatientId != record.PatientId)
+                if(id != record.PatientId)
                 {
                     throw new ArgumentException("BadRequest!!");
                 }
