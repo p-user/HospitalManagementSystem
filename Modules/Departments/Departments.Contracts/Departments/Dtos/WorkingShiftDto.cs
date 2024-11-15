@@ -15,6 +15,8 @@ namespace Departments.Contracts.Departments.Dtos
         [Required]
         public Guid DepartmentId { get; init; }
 
+        public Guid? DoctorId { get; init; }
+
         
     }
 

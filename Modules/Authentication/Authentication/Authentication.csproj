@@ -10,6 +10,7 @@
     <ProjectReference Include="..\..\..\Shared\Shared.Messaging\Shared.Messaging.csproj" />
     <ProjectReference Include="..\..\..\Shared\Shared\Shared.csproj" />
     <ProjectReference Include="..\..\Doctors\Doctors.Contracts\Doctors.Contracts.csproj" />
+    <ProjectReference Include="..\..\Patients\Patients.Contracts\Patients.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

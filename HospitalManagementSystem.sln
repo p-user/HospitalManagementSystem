@@ -39,6 +39,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication", "Modules\Authentication\Authentication\Authentication.csproj", "{A03DD394-4DA2-403E-BA4E-CA41F464E0E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appointments.Contracts", "Modules\Appointments\Appointments.Contracts\Appointments.Contracts.csproj", "{4D1C5CC8-4C20-4B2E-9D75-26879C59ABF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Patients.Contracts", "Modules\Patients\Patients.Contracts\Patients.Contracts.csproj", "{34EA7B15-F753-473E-8F45-A5DCD58788EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +89,14 @@ Global
 		{A03DD394-4DA2-403E-BA4E-CA41F464E0E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A03DD394-4DA2-403E-BA4E-CA41F464E0E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A03DD394-4DA2-403E-BA4E-CA41F464E0E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D1C5CC8-4C20-4B2E-9D75-26879C59ABF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1C5CC8-4C20-4B2E-9D75-26879C59ABF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1C5CC8-4C20-4B2E-9D75-26879C59ABF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1C5CC8-4C20-4B2E-9D75-26879C59ABF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34EA7B15-F753-473E-8F45-A5DCD58788EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34EA7B15-F753-473E-8F45-A5DCD58788EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34EA7B15-F753-473E-8F45-A5DCD58788EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34EA7B15-F753-473E-8F45-A5DCD58788EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +117,8 @@ Global
 		{403010D6-1437-4366-8B5A-8A318ECCA393} = {32FDE85C-D8D8-4DEC-B8F0-6BC8CA17510D}
 		{05454777-1DC2-41F4-B322-9222CDD528C3} = {A2D07A19-D830-4D59-A558-3B09689C69C7}
 		{A03DD394-4DA2-403E-BA4E-CA41F464E0E5} = {05454777-1DC2-41F4-B322-9222CDD528C3}
+		{4D1C5CC8-4C20-4B2E-9D75-26879C59ABF4} = {D72E4C0B-50ED-4D74-8551-A06D5A7770A8}
+		{34EA7B15-F753-473E-8F45-A5DCD58788EC} = {50C6AED5-DCFA-45C2-BE82-6D0B15828699}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {38563598-BD0F-470F-AB11-10E2D77A132D}

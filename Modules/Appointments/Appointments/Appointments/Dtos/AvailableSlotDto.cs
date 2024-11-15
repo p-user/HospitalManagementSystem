@@ -5,8 +5,8 @@ namespace Appointments.Appointments.Dtos
 {
     public record AvailableSlotDto
     {
-        [Required]
-        public Guid DoctorId { get; init; }
+        
+        public Guid? DoctorId { get; set; }
 
         [Required]
         public Guid ShiftId { get; init; }
