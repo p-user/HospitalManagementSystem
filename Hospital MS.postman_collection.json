@@ -1,0 +1,3047 @@
+{
+	"info": {
+		"_postman_id": "bc4f3a98-ee01-427b-9760-7a66acc847ff",
+		"name": "Hospital MS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28353587"
+	},
+	"item": [
+		{
+			"name": "doctors",
+			"item": [
+				{
+					"name": "specializations",
+					"item": [
+						{
+							"name": "{id}",
+							"item": [
+								{
+									"name": "Delete Specialization",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/doctors/specializations/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												"specializations",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Delete specialization entity"
+									},
+									"response": [
+										{
+											"name": "No Content",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/doctors/specializations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"doctors",
+														"specializations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "No Content",
+											"code": 204,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"succeeded\": \"<boolean>\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/doctors/specializations/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"doctors",
+														"specializations",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Update Specialization",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"specializationDto\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"id\": \"<uuid>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/doctors/specializations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors",
+										"specializations"
+									]
+								},
+								"description": "Update a specific specialization entity"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"specializationDto\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"id\": \"<uuid>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/doctors/specializations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												"specializations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<uuid>\"\n}"
+								},
+								{
+									"name": "No Content",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"specializationDto\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"id\": \"<uuid>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/doctors/specializations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												"specializations"
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<uuid>\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"specializationDto\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"id\": \"<uuid>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/doctors/specializations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												"specializations"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Doctor Specializations",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/doctors/specializations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors",
+										"specializations"
+									]
+								},
+								"description": "Get all specialization entities"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/doctors/specializations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												"specializations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"specializationDtos\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Create Specialization",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"specializationDto\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/doctors/specializations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors",
+										"specializations"
+									]
+								},
+								"description": "Create a doctor's field of specialization"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"specializationDto\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/doctors/specializations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												"specializations"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<uuid>\"\n}"
+								},
+								{
+									"name": "Created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"specializationDto\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/doctors/specializations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												"specializations"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"<uuid>\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"specializationDto\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/doctors/specializations",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												"specializations"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Get Doctor By Id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/doctors/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<uuid>",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Retrieve Doctor entity"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/doctors/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"doctorDto\": {\n    \"name\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"departmentId\": \"<uuid>\",\n    \"specializationId\": \"<uuid>\",\n    \"workingStartDate\": \"<date>\",\n    \"graduatedUniversity\": \"<string>\",\n    \"email\": \"<string>\"\n  }\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/doctors/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Doctor",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/doctors/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<uuid>",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Delete Doctor entity"
+							},
+							"response": [
+								{
+									"name": "No Content",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/doctors/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"succeeded\": \"<boolean>\"\n}"
+								},
+								{
+									"name": "Bad Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/problem+json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/doctors/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"doctors",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/problem+json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Update Doctor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"doctorDto\": {\n    \"name\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"departmentId\": \"<uuid>\",\n    \"specializationId\": \"<uuid>\",\n    \"workingStartDate\": \"<date>\",\n    \"graduatedUniversity\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"doctorId\": \"<uuid>\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/doctors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"doctors"
+							]
+						},
+						"description": "Update doctor entity"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"doctorDto\": {\n    \"name\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"departmentId\": \"<uuid>\",\n    \"specializationId\": \"<uuid>\",\n    \"workingStartDate\": \"<date>\",\n    \"graduatedUniversity\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"doctorId\": \"<uuid>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/doctors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"succeeded\": \"<boolean>\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"doctorDto\": {\n    \"name\": \"<string>\",\n    \"surname\": \"<string>\",\n    \"departmentId\": \"<uuid>\",\n    \"specializationId\": \"<uuid>\",\n    \"workingStartDate\": \"<date>\",\n    \"graduatedUniversity\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"doctorId\": \"<uuid>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/doctors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Doctors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/doctors?PageIndex=0&PageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"doctors"
+							],
+							"query": [
+								{
+									"key": "PageIndex",
+									"value": "0"
+								},
+								{
+									"key": "PageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get all doctor entities"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/doctors?PageIndex=0&PageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors"
+									],
+									"query": [
+										{
+											"key": "PageIndex",
+											"value": "0"
+										},
+										{
+											"key": "PageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"doctorDtos\": {\n    \"pageIndex\": \"<integer>\",\n    \"pageSize\": \"<integer>\",\n    \"count\": \"<integer>\",\n    \"data\": [\n      {\n        \"name\": \"<string>\",\n        \"surname\": \"<string>\",\n        \"departmentId\": \"<uuid>\",\n        \"specializationId\": \"<uuid>\",\n        \"workingStartDate\": \"<date>\",\n        \"graduatedUniversity\": \"<string>\",\n        \"email\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"surname\": \"<string>\",\n        \"departmentId\": \"<uuid>\",\n        \"specializationId\": \"<uuid>\",\n        \"workingStartDate\": \"<date>\",\n        \"graduatedUniversity\": \"<string>\",\n        \"email\": \"<string>\"\n      }\n    ]\n  }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Doctor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkRGRTZFRTA3QkM2OEU5MUY5REREODMxNTk2NDBERjQ2IiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU3LyIsIm5iZiI6MTczMTY4MzQxMiwiaWF0IjoxNzMxNjgzNDEyLCJleHAiOjE3MzE2ODcwMTIsInNjb3BlIjpbImhvc3BpdGFsQXBpIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbInBhc3N3b3JkIl0sImNsaWVudF9pZCI6Ikhvc3BpdGFsQ2xpZW50Iiwic3ViIjoiODU5YjlkMGMtNDdiMi00ODQ0LWJmYWUtZjQzMDg4Nzg2ZWJjIiwiYXV0aF90aW1lIjoxNzMxNjgzNDEyLCJpZHAiOiJsb2NhbCIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW5AYWRtaW4uY29tIiwicm9sZSI6IkFkbWluIiwianRpIjoiNzE0RDQ0NzgwNURCQUQyOTVDM0I0M0U4MEY2OUY3QUUifQ.DDLF3qoBM2cxIMvKKHNTHGOwdX9KQjQl6z-8DxeZIter-PL4OrFXnEMA9nS8mwW8Rsy43BP_FMOkg8CY-ZdRrXyTnK5c7fRjlBPKZ5NYdqlGRXyCWG8YFB3KGJFqGKpNp1lB_SBSrHVa5POHlREBCWMWDsqbN9R0WqhPNKpiuSH8hilBwMt5COYNuH3fuudk2nmB8FkkBaRv5hxOj0cDL1Hjg0CxWDzztMuf1u3wARejisi3hy8ZVhTxLQ4jqOSFy4F-xQOdPSqyhOJgEiVFn-LfDfzMUVgiAibHEfzGp0-s3bXsjdVr-gFnButTYCAIs2yVwoTN6PWvcyggkzNBxg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Burcu\",\n  \"surname\": \"Karaman\",\n  \"departmentId\": \"DDE15345-B3AD-41B4-9EC4-6589FD673D5F\",\n  \"specializationId\": \"F46ADB63-7CC8-4B7C-80FE-8A52E3B0390B\",\n  \"workingStartDate\": \"2024-11-15\", //date only\n  \"graduatedUniversity\": \"Ondokuz Mayis Universuty\",\n  \"email\": \"pamelaagaj@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/doctors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"doctors"
+							]
+						},
+						"description": "Create doctor entity"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"departmentId\": \"<uuid>\",\n  \"specializationId\": \"<uuid>\",\n  \"workingStartDate\": \"<date>\",\n  \"graduatedUniversity\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/doctors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<uuid>\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"<string>\",\n  \"surname\": \"<string>\",\n  \"departmentId\": \"<uuid>\",\n  \"specializationId\": \"<uuid>\",\n  \"workingStartDate\": \"<date>\",\n  \"graduatedUniversity\": \"<string>\",\n  \"email\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/doctors",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"doctors"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "departments",
+			"item": [
+				{
+					"name": "{departmentId}",
+					"item": [
+						{
+							"name": "workingShifts",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "Get Working Shift",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/departments/:departmentId/workingShifts/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"departments",
+														":departmentId",
+														"workingShifts",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "departmentId"
+														},
+														{
+															"key": "id",
+															"value": "<uuid>",
+															"description": "(Required) "
+														}
+													]
+												},
+												"description": "Get a specific working shift "
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/departments/:departmentId/workingShifts/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"departments",
+																":departmentId",
+																"workingShifts",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "departmentId"
+																},
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "assignHeadOfDepartment",
+							"item": [
+								{
+									"name": "Assign Head Of Department",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"doctorId\": \"<uuid>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/departments/:id/assignHeadOfDepartment",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"departments",
+												":id",
+												"assignHeadOfDepartment"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Assign the chief doctor of department"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"doctorId\": \"<uuid>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/departments/:id/assignHeadOfDepartment",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"departments",
+														":id",
+														"assignHeadOfDepartment"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"succeded\": \"<boolean>\"\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"doctorId\": \"<uuid>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/departments/:id/assignHeadOfDepartment",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"departments",
+														":id",
+														"assignHeadOfDepartment"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Get Department",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/departments/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"departments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<uuid>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/departments/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"departments",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get Departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/departments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"departments"
+							]
+						},
+						"description": "Get All Departments of the hospital"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create Department",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"departmentDto\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"headOfDepartment\": \"<uuid>\"\n  }\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/departments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"departments"
+							]
+						},
+						"description": "Create Deapartment of a hospital"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"departmentDto\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"headOfDepartment\": \"<uuid>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<uuid>\"\n}"
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"departmentDto\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"headOfDepartment\": \"<uuid>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<uuid>\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"departmentDto\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"headOfDepartment\": \"<uuid>\"\n  }\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/departments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"<uuid>\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "verify-otp",
+					"item": [
+						{
+							"name": "Verify Otp",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/authentication/verify-otp?password={{Password}}?&email=&otp=CfDJ8P2sVKUqafZMheFLI7n44aLT9fSbslZ9RAufAgL+UM/JRMQ6h/BVra5Af3c38oitb4VYHA117wrtS36Pe9ldk2c1anAFHzsARl5+wWeziR+CiVPoke7ObQ4/v6FCPPB4Fhf+TXN5j/b3JEaY77n8qdZGlcNYjcpfBJfcAR2XtQYONGo87W5jg7EaJ2n4GcNERq/tHsMGblzHMtyczhVxPXEJ/D1XHBPdDNYDZMCP8EPg",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"authentication",
+										"verify-otp"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "",
+											"description": "(Required) ",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "{{Password}}?",
+											"description": "(Required) "
+										},
+										{
+											"key": "otp",
+											"value": "CfDJ8P2sVKUqafZMheFLI7n44aIZZdt60tn534M3xloOeqrZ8hGiRHzG24aJjeTwLnLWgyOfC1ltwdu68KipnmyKEoHpskUlDLSd10qFpzg4/4M9+5jrc/41NWJjW+UPW464SPdDkjz9suXqVwh+KJ9ewMWxKOJbaSOgqFPLBFIVT7zBZ0aiKDtWoKPYzs9X76xclkj4fvnsHs2Zz4PH8wZHZGb3iArXmMU9EvQ0YNuW4uqn",
+											"description": "(Required) ",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": ""
+										},
+										{
+											"key": "password",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "otp",
+											"value": "CfDJ8P2sVKUqafZMheFLI7n44aLT9fSbslZ9RAufAgL+UM/JRMQ6h/BVra5Af3c38oitb4VYHA117wrtS36Pe9ldk2c1anAFHzsARl5+wWeziR+CiVPoke7ObQ4/v6FCPPB4Fhf+TXN5j/b3JEaY77n8qdZGlcNYjcpfBJfcAR2XtQYONGo87W5jg7EaJ2n4GcNERq/tHsMGblzHMtyczhVxPXEJ/D1XHBPdDNYDZMCP8EPg"
+										}
+									]
+								},
+								"description": "Verify Otp and sets new password"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/authentication/verify-otp?email=<string>&password=<string>&otp=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authentication",
+												"verify-otp"
+											],
+											"query": [
+												{
+													"key": "email",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "password",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "otp",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "refreshToken",
+					"item": [
+						{
+							"name": "Refresh Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<string>",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/authentication/refreshToken",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"authentication",
+										"refreshToken"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "<string>",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/authentication/refreshToken",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authentication",
+												"refreshToken"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"item": [
+						{
+							"name": "Log Out",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/authentication/logout?refreshToken=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"authentication",
+										"logout"
+									],
+									"query": [
+										{
+											"key": "refreshToken",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/authentication/logout?refreshToken=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authentication",
+												"logout"
+											],
+											"query": [
+												{
+													"key": "refreshToken",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "connectToken",
+					"item": [
+						{
+							"name": "Get Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/authentication/connectToken?email=<string>&password=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"authentication",
+										"connectToken"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "password",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/authentication/connectToken?email=<string>&password=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"authentication",
+												"connectToken"
+											],
+											"query": [
+												{
+													"key": "email",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "password",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "patients",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "medicalRecords",
+							"item": [
+								{
+									"name": "Get Medical Records",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkRGRTZFRTA3QkM2OEU5MUY5REREODMxNTk2NDBERjQ2IiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU3LyIsIm5iZiI6MTczMjA5NDQ1OSwiaWF0IjoxNzMyMDk0NDU5LCJleHAiOjE3MzIwOTgwNTksInNjb3BlIjpbImhvc3BpdGFsQXBpIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbInBhc3N3b3JkIl0sImNsaWVudF9pZCI6Ikhvc3BpdGFsQ2xpZW50Iiwic3ViIjoiOWQ5MmNmN2QtMzBiYy00MzMyLTgyMzEtMDNiMzIzZWU1NmE3IiwiYXV0aF90aW1lIjoxNzMyMDk0NDU5LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicGFtZWxhYWdhakBnbWFpbC5jb20iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJwYW1lbGFhZ2FqQGdtYWlsLmNvbSIsInJvbGUiOiJEb2N0b3IiLCJEb2N0b3JJZCI6IjhiYzQ2NTUxLTkxMTMtNGNiOC1iZGI3LTNjMGEyNmExZTA1YiIsImp0aSI6IjEyQTQ2QkNEQjQ3QUEyRDY4RTE5RkY3QUFGMjZEQUVCIn0.eqU18QwOKNNbgs57R2IxevWJVSVBjU8_owZY_7q8HaFrUS2clf-THPPu330cP-luuj5N_dM74MT1rNrd1LvTaNoTZI0sW-ukIhbyyOtmMaHx4fV2YZumxfcRvq2_wI8b2w6izJwicKOwl4XXIUYjjI15SKRBkQjeygRRazX8CT9-2OK674ZnU1x9ayq0mqil7DcCTDYsUK94m1btYNI2pxSMuEZgVnyBLpnkYeK0t-Nb8Bh-fJJ78xjxLIQKDTWmxtHkjRzFHez1cbf4i0YbRoyp9HOG_zjKXH-0oe07L1OlMD0AxlaNo7eW_hGmdC-0WV0IzDv0VGBs1tzBPmr_8Q",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/patients/:id/medicalRecords",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"patients",
+												":id",
+												"medicalRecords"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "ACA4A0CB-BB72-403F-A4E4-0B8B72102DB6",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Get Medical records of a patient"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/patients/:id/medicalRecords",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"patients",
+														":id",
+														"medicalRecords"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "medicalrecords",
+							"item": [
+								{
+									"name": "Add Medical Record To Patient",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"date\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"patientId\": \"<uuid>\",\n  \"recordType\": 4,\n  \"title\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/patients/:id/medicalrecords",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"patients",
+												":id",
+												"medicalrecords"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Add medical record to patient"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"date\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"patientId\": \"<uuid>\",\n  \"recordType\": 4,\n  \"title\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/patients/:id/medicalrecords",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"patients",
+														":id",
+														"medicalrecords"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "<boolean>"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"date\": \"<dateTime>\",\n  \"description\": \"<string>\",\n  \"patientId\": \"<uuid>\",\n  \"recordType\": 4,\n  \"title\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/patients/:id/medicalrecords",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"patients",
+														":id",
+														"medicalrecords"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "allergies",
+							"item": [
+								{
+									"name": "Add Allergy To Patient",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkRGRTZFRTA3QkM2OEU5MUY5REREODMxNTk2NDBERjQ2IiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU3LyIsIm5iZiI6MTczMjA5ODU3NCwiaWF0IjoxNzMyMDk4NTc0LCJleHAiOjE3MzIxMDIxNzQsInNjb3BlIjpbImhvc3BpdGFsQXBpIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbInBhc3N3b3JkIl0sImNsaWVudF9pZCI6Ikhvc3BpdGFsQ2xpZW50Iiwic3ViIjoiOWQ5MmNmN2QtMzBiYy00MzMyLTgyMzEtMDNiMzIzZWU1NmE3IiwiYXV0aF90aW1lIjoxNzMyMDk4NTc0LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicGFtZWxhYWdhakBnbWFpbC5jb20iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJwYW1lbGFhZ2FqQGdtYWlsLmNvbSIsInJvbGUiOiJEb2N0b3IiLCJEb2N0b3JJZCI6IjhiYzQ2NTUxLTkxMTMtNGNiOC1iZGI3LTNjMGEyNmExZTA1YiIsImp0aSI6IjU1N0QyNjFFRDc1RkNGQzIyOTY3RDM4NTYyRUFEOTQ1In0.gWTqdzvfCI390bchfvsaowWKiHzj-UVtmBOsUmN7lJADAxiEQSEWe2nl1MIbHwu2Nzse6p6Q3uXeZkKcZW-fowyFQTgYoUynSO-ggfWhzsH_JvmX_jUtELwkYust39WwM7k2ax6XJdTrx-VAe1GrewQ-6-shD1-dsuktMZMR_U6nkzZCW3UJHop8dn8TRGdvwoCCSeO8tHy_gvoFipT5iWETXfk7zwUcN93_l_vECkLQj862kvFV8PDpLpoHT1UhZ6OqMlj4n-c-QCvO1e6vu82ofdDkPHzwxBez8sCdGFq4TlA6mW-rzo_NA_M2oYhmqfF-1DZxF-Qnx-EQSnL1Nw",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"allergyName\": \"Penicilin\",\n  \"allergyType\": \"Medicational\",\n  \"reaction\": \"Rash\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/patients/:id/allergies",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"patients",
+												":id",
+												"allergies"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "aca4a0cb-bb72-403f-a4e4-0b8b72102db6",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Add Allergy to patient"
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"allergyName\": \"<string>\",\n  \"allergyType\": \"<string>\",\n  \"reaction\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/patients/:id/allergies",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"patients",
+														":id",
+														"allergies"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "<boolean>"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													},
+													{
+														"key": "Authorization",
+														"value": "Bearer <token>",
+														"description": "Added as a part of security scheme: bearer"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"allergyName\": \"<string>\",\n  \"allergyType\": \"<string>\",\n  \"reaction\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/patients/:id/allergies",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"patients",
+														":id",
+														"allergies"
+													],
+													"variable": [
+														{
+															"key": "id"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/problem+json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+										}
+									]
+								},
+								{
+									"name": "GetAllergies",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkRGRTZFRTA3QkM2OEU5MUY5REREODMxNTk2NDBERjQ2IiwidHlwIjoiYXQrand0In0.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTU3LyIsIm5iZiI6MTczMjA5NDQ1OSwiaWF0IjoxNzMyMDk0NDU5LCJleHAiOjE3MzIwOTgwNTksInNjb3BlIjpbImhvc3BpdGFsQXBpIiwib2ZmbGluZV9hY2Nlc3MiXSwiYW1yIjpbInBhc3N3b3JkIl0sImNsaWVudF9pZCI6Ikhvc3BpdGFsQ2xpZW50Iiwic3ViIjoiOWQ5MmNmN2QtMzBiYy00MzMyLTgyMzEtMDNiMzIzZWU1NmE3IiwiYXV0aF90aW1lIjoxNzMyMDk0NDU5LCJpZHAiOiJsb2NhbCIsImVtYWlsIjoicGFtZWxhYWdhakBnbWFpbC5jb20iLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJwYW1lbGFhZ2FqQGdtYWlsLmNvbSIsInJvbGUiOiJEb2N0b3IiLCJEb2N0b3JJZCI6IjhiYzQ2NTUxLTkxMTMtNGNiOC1iZGI3LTNjMGEyNmExZTA1YiIsImp0aSI6IjEyQTQ2QkNEQjQ3QUEyRDY4RTE5RkY3QUFGMjZEQUVCIn0.eqU18QwOKNNbgs57R2IxevWJVSVBjU8_owZY_7q8HaFrUS2clf-THPPu330cP-luuj5N_dM74MT1rNrd1LvTaNoTZI0sW-ukIhbyyOtmMaHx4fV2YZumxfcRvq2_wI8b2w6izJwicKOwl4XXIUYjjI15SKRBkQjeygRRazX8CT9-2OK674ZnU1x9ayq0mqil7DcCTDYsUK94m1btYNI2pxSMuEZgVnyBLpnkYeK0t-Nb8Bh-fJJ78xjxLIQKDTWmxtHkjRzFHez1cbf4i0YbRoyp9HOG_zjKXH-0oe07L1OlMD0AxlaNo7eW_hGmdC-0WV0IzDv0VGBs1tzBPmr_8Q",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/patients/:id/allergies",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"patients",
+												":id",
+												"allergies"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "aca4a0cb-bb72-403f-a4e4-0b8b72102db6"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get Patient",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/patients/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"patients",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<uuid>",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Get a specific patient"
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/patients/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"patients",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"dateOfBirth\": \"<dateTime>\",\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Create Patient",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dateOfBirth\": \"2004-11-15T14:54:55.013Z\",\n  \"email\": \"pamela@dev.al\",\n  \"firstName\": \"Hakuna\",\n  \"lastName\": \"Matata\",\n  \"gender\": \"Female\",\n  \"phoneNumber\": \"0691234456\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patients",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patients"
+							]
+						},
+						"description": "Create patient entity"
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"dateOfBirth\": \"<dateTime>\",\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/patients",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"patients"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "<uuid>"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/problem+json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"dateOfBirth\": \"<dateTime>\",\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"phoneNumber\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/patients",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"patients"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "appointments",
+			"item": [
+				{
+					"name": "availableSlots",
+					"item": [
+						{
+							"name": "{slotId}",
+							"item": [
+								{
+									"name": "requestAppoinment",
+									"item": [
+										{
+											"name": "Request Appointment",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/problem+json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/appointments/availableSlots/:slotId/requestAppoinment",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"appointments",
+														"availableSlots",
+														":slotId",
+														"requestAppoinment"
+													],
+													"variable": [
+														{
+															"key": "slotId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/appointments/availableSlots/:slotId/requestAppoinment",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"appointments",
+																"availableSlots",
+																":slotId",
+																"requestAppoinment"
+															],
+															"variable": [
+																{
+																	"key": "slotId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"name": "Bad Request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/problem+json"
+															},
+															{
+																"key": "Authorization",
+																"value": "Bearer <token>",
+																"description": "Added as a part of security scheme: bearer"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/appointments/availableSlots/:slotId/requestAppoinment",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"appointments",
+																"availableSlots",
+																":slotId",
+																"requestAppoinment"
+															],
+															"variable": [
+																{
+																	"key": "slotId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/problem+json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\",\n  \"aliqua4\": {},\n  \"ullamco1f2\": {}\n}"
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Create Available Slot",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"shiftId\": \"<uuid>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": 1,\n  \"doctorId\": \"<uuid>\",\n  \"appointmentLimit\": \"<integer>\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/appointments/availableSlots",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"appointments",
+										"availableSlots"
+									]
+								},
+								"description": "Create available time slot within a working shift so that patients can book an appoinment with the doctor."
+							},
+							"response": [
+								{
+									"name": "OK",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"endTime\": \"<dateTime>\",\n  \"shiftId\": \"<uuid>\",\n  \"startTime\": \"<dateTime>\",\n  \"status\": 1,\n  \"doctorId\": \"<uuid>\",\n  \"appointmentLimit\": \"<integer>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/appointments/availableSlots",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"appointments",
+												"availableSlots"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:7157"
+		}
+	]
+}
