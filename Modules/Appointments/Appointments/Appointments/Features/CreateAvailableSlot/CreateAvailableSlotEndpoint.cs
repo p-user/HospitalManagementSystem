@@ -25,11 +25,11 @@ namespace Appointments.Appointments.Features.CreateAvailableSlot
                 }
                 var command = new CreateAvailableSlotCommand(dto);
                 var result = await sender.Send(command);
-                return Results.Ok(result);
+                return TypedResults.Ok(result);
 
             }).WithDescription("Create available time slot within a working shift so that patients can book an appoinment with the doctor.")
             .WithName("CreateAvailableSlot")
-            .RequireAuthorization(Policies.DoctorOnly, Policies.AdminOnly);
+            .RequireAuthorization(Policies.DoctorOrAdminOnly);
         }
     }
 }

@@ -57,6 +57,12 @@ namespace Authentication
             {
                 options.AddPolicy(Policies.AdminOnly, policy => policy.RequireRole(DefaultRoles.AdminRole));
                 options.AddPolicy(Policies.DoctorOnly, policy => policy.RequireRole(DefaultRoles.DoctorRole));
+                options.AddPolicy(Policies.DoctorOrAdminOnly, policy =>
+                {
+                    policy.RequireAssertion(context =>
+                                   context.User.IsInRole(DefaultRoles.AdminRole) ||
+                                   context.User.IsInRole(DefaultRoles.DoctorRole));
+                });
             });
 
             services.AddScoped<ISeedData, AuthenticationSeed>();

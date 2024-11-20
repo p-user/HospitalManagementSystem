@@ -1,6 +1,4 @@
-﻿using MassTransit.Transports;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Patients.Patients.Entities;
 
 namespace Patients.Data.Configurations
@@ -15,14 +13,18 @@ namespace Patients.Data.Configurations
                 a.Property(al => al.AllergyType).IsRequired();
                 a.Property(al => al.Reaction).IsRequired();
                 a.Property(al => al.DateReported).IsRequired();
-            });
+            })
 
-            //builder.HasMany(o => o.MedicalRecords)
-            //.WithOne()
-            //.HasForeignKey(o=>o.Id);
+            .Navigation(p => p.Allergies)
+            .UsePropertyAccessMode(PropertyAccessMode.Field)
+            .HasField("_allergies");
 
-            //builder.Navigation(o => o.MedicalRecords)
-            //.UsePropertyAccessMode(PropertyAccessMode.Field);
+            builder.HasMany(o => o.MedicalRecords)
+            .WithOne()
+            .HasForeignKey(o => o.Id);
+
+            builder.Navigation(o => o.MedicalRecords)
+            .UsePropertyAccessMode(PropertyAccessMode.Field).HasField("_medicalRecords");
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Appointments.Appointments.Features.RequestAppointment
             }).WithName("RequestAppointment")
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .Produces(StatusCodes.Status200OK)
-            .RequireAuthorization();
+            .RequireAuthorization(Policies.PatientOnly);
                 
         }
     }

@@ -15,11 +15,11 @@ namespace Patients.Patients.Entities
 
         //Allergies
 
-        private static List<Allergy> _allergies= new();
+        private  List<Allergy> _allergies= new();
         public IReadOnlyCollection<Allergy> Allergies => _allergies.AsReadOnly();
 
         //MediaclRecords
-        private static List<MedicalRecord> _medicalRecords = new();
+        private  List<MedicalRecord> _medicalRecords = new();
         public IReadOnlyList<MedicalRecord> MedicalRecords => _medicalRecords.AsReadOnly();
         
 
@@ -62,9 +62,9 @@ namespace Patients.Patients.Entities
             PhoneNumber = phoneNumber;
         }
 
-        public static void AddAllergy(string allergyName, string allergyType, string reaction, DateTime dateReported)
+        public void AddAllergy(string allergyName, string allergyType, string reaction, DateTime dateReported)
         {
-            var record = _allergies.FirstOrDefault(r => r.AllergyName.ToLower() == allergyName.ToLower());
+            var record = Allergies.FirstOrDefault(r => r.AllergyName.ToLower() == allergyName.ToLower());
             if (record == null)
             {
                 var allergy = new Allergy(allergyName, allergyType, reaction, dateReported);
@@ -72,7 +72,7 @@ namespace Patients.Patients.Entities
             }
         }
 
-        public static void RemoveAllergy(Allergy allergy)
+        public void RemoveAllergy(Allergy allergy)
         {
             if (_allergies.Contains(allergy))
             {

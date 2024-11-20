@@ -11,13 +11,14 @@ namespace Patients.Patients.Features.AddAllegyToPatient
             {
                 var command = new AddAllegyToPatientCommand(id, allergy);
                 var response = await sender.Send(command);
-                return Results.Ok(response);
+               
+                return TypedResults.Created($"/patients/{id}/allergies/", new { success = response.Succeded });
 
             }).WithDescription("Add Allergy to patient")
             .WithName("AddAllergyToPatient")
             .Produces<bool>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .RequireAuthorization(Policies.DoctorOnly);
+            .RequireAuthorization(Policies.DoctorOrAdminOnly);
 
         }
     }

@@ -38,7 +38,7 @@ builder.Services.AddValidatorsFromAssemblies([doctorsAssembly,departmentsAssembl
 builder.Services.AddMediatRDromAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly, emailAssembly, patientsAssembly, appoinmentAssembly);
 
 //add masstransit
-builder.Services.AddMassTransitForAssemblies(doctorsAssembly, departmentsAssembly, authenticationAssembly, patientsAssembly, appoinmentAssembly);
+builder.Services.AddMassTransitForAssemblies(builder.Configuration,doctorsAssembly, departmentsAssembly, authenticationAssembly, patientsAssembly, appoinmentAssembly);
 
 
 

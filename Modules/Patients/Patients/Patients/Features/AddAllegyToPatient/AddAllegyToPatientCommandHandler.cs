@@ -27,7 +27,7 @@ namespace Patients.Patients.Features.AddAllegyToPatient
 
         private  void AddAllergy(Patient patient, AllergyDto allergyDto)
         {
-            Patient.AddAllergy(allergyDto.AllergyName, allergyDto.AllergyType, allergyDto.Reaction, DateTime.UtcNow);
+            patient.AddAllergy(allergyDto.AllergyName, allergyDto.AllergyType, allergyDto.Reaction, DateTime.UtcNow);
         }
     }
 }

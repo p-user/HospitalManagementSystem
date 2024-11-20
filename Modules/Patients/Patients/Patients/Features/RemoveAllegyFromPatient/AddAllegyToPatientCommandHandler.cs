@@ -37,7 +37,7 @@ namespace Patients.Patients.Features.RemoveAllergyFromPatient
 
         private  void RemoveAllergy(Patient patient, Allergy allergyDto)
         {
-            Patient.RemoveAllergy(allergyDto);
+            patient.RemoveAllergy(allergyDto);
         }
     }
 }

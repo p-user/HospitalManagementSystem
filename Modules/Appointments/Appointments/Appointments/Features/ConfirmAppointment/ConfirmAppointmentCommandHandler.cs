@@ -1,11 +1,8 @@
-﻿
-
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Appointments.Appointments.Features.ConfirmAppointment
 {
-    public record ConfirmAppointmentCommand(Guid AppoinmentId) : IRequest<ConfirmAppointmentCommandResponse>;
+    public record ConfirmAppointmentCommand(Guid AppoinmentId, Guid DoctorId) : IRequest<ConfirmAppointmentCommandResponse>;
     public record ConfirmAppointmentCommandResponse(bool Succeded);
     public class ConfirmAppointmentCommandHandler(AppointmentsDbContext appointmentsDbContext) : IRequestHandler<ConfirmAppointmentCommand, ConfirmAppointmentCommandResponse>
     {
@@ -17,6 +14,11 @@ namespace Appointments.Appointments.Features.ConfirmAppointment
 
 
             if (entity == null) { throw new NotFoundException($" Available slot was not found with appoinment  {request.AppoinmentId}"); }
+
+            if(entity.DoctorId != request.DoctorId)
+            {
+                throw new Exception("The doctor you provided is not authorised to confirm this appointment!");
+            }
 
             entity.ConfirmAppoinment(request.AppoinmentId);
             entity.CheckBookingLimit();
