@@ -16,9 +16,6 @@ namespace Departments.Data.Configurations
                    .IsRequired()
                    .HasMaxLength(1000);
 
-            //builder.HasMany(s => s.Doctors)
-            //   .WithOne()
-            //   .HasForeignKey(si => si.DepartmentId);
         }
     }
 }

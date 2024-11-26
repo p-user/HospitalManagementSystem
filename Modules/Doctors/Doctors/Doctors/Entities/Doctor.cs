@@ -18,7 +18,7 @@ namespace Doctors.Doctors.Entities
         public string Email { get; private set; }
 
         //from departments module
-        public bool IsHeadOfDepartment { get; private set; } = false;
+        public bool IsHeadOfDepartment { get; private set; }
 
         public static List<WorkingShift> _workingShifts = new();
         public IReadOnlyCollection<WorkingShift> WorkingShifts= _workingShifts.AsReadOnly();
@@ -46,8 +46,9 @@ namespace Doctors.Doctors.Entities
                 SpecializationId = specializationId,
                 WorkingStartDate = workingStartDate,
                 GraduatedUniversity = graduatedUniversity,
-                Email = email
-            };
+                Email = email,
+                IsHeadOfDepartment =false
+             };
 
             doctor.AddDomainEvent(new DoctorAddedToDepartmentDomainEvent(doctor)); 
             doctor.AddDomainEvent(new DoctorAddedToApplicationUsersDomainEvent(doctor)); 

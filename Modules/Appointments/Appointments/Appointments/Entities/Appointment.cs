@@ -32,7 +32,10 @@ namespace Appointments.Appointments.Entities
         public  void ConfirmAppointment()
         {
             if (Status != AppointmentStatus.Pending)
+            {
+
                 throw new InvalidOperationException("Only pending appointments can be confirmed.");
+            }
 
             Status = AppointmentStatus.Confirmed;
         }
@@ -40,7 +43,10 @@ namespace Appointments.Appointments.Entities
         public void CancelAppointment()
         {
             if (Status != AppointmentStatus.Canceled)
+            {
+
                 throw new InvalidOperationException("The appointment is already canceled");
+            }
 
             Status = AppointmentStatus.Canceled;
         }

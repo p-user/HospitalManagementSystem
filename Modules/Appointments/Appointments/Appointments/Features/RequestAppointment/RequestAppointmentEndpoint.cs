@@ -19,7 +19,6 @@ namespace Appointments.Appointments.Features.RequestAppointment
 
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            var userEmail = string.Empty;
            
             app.MapPost("/appointments/availableSlots/{slotId}/requestAppoinment", async([FromRoute]Guid slotId, HttpContext context,ISender sender) => 
             {

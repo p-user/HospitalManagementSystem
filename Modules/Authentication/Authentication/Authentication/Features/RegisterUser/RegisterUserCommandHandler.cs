@@ -30,7 +30,7 @@ namespace Authentication.Authentication.Features.RegisterUser
             await _userManager.AddToRoleAsync(appUser, request.ApplicationUserDto.Role);
 
             //create otp and send email
-            var otpResponse = await sender.Send(new GenerateOTPCommand(appUser.Id));
+            await sender.Send(new GenerateOTPCommand(appUser.Id));
 
             return new RegisterUserCommandResponse(true);
 

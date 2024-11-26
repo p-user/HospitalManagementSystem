@@ -13,7 +13,7 @@ namespace Authentication.Authentication.Features.VerifyOTP
             if (user == null) throw new NotFoundException("User not found.");
 
             // Check OTP validation
-            var isValidOtp = await _userManager.VerifyUserTokenAsync(user, TokenOptions.DefaultProvider, "OTP", request.Otp);
+            await _userManager.VerifyUserTokenAsync(user, TokenOptions.DefaultProvider, "OTP", request.Otp);
             user.VerifyOtp();
             user.EmailConfirmed = true;
             user.PasswordHash =_userManager.PasswordHasher.HashPassword(user,request.Password);
