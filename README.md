@@ -1,4 +1,4 @@
-# Hospital Management System (Modular Monolith)
+# Hospital Management System
 
 
 ## 📌 Project Description
